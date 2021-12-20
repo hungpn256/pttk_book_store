@@ -1,7 +1,12 @@
 package model;
-public class Staff extends User {
 
+import javax.persistence.JoinColumn;
+
+public class Staff extends User {
+	@JoinColumn(name = "position")
 	private String position;
+	 
+	@JoinColumn(name = "salary")
 	private float salary;
 	
 	public Staff() {

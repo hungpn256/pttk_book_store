@@ -1,51 +1,83 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "book")
 public class Book {
-
-	BookItem BookItem;
-	Category Category;
-	Author Author;
-	Publisher Publisher;
+	@OneToOne
+	@JoinColumn(name = "BookItemID")
+	BookItem bookItem;
+	
+	@OneToOne
+	@JoinColumn(name = "CategoryID")
+	Category category;
+	
+	@OneToOne
+	@JoinColumn(name = "AuthorID")
+	Author author;
+	
+	@OneToOne
+	@JoinColumn(name = "PublisherID")
+	Publisher publisher;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private int id;
+	
+	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "numberOfPage")
 	private String numberOfPage;
-	private String price;
+	
+	@Column(name = "price")
+	private float price;
 	
 	public Book() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public BookItem getBookItem() {
-		return BookItem;
+		return bookItem;
 	}
 
 	public void setBookItem(BookItem bookItem) {
-		BookItem = bookItem;
+		this.bookItem = bookItem;
 	}
 
 	public Category getCategory() {
-		return Category;
+		return category;
 	}
 
 	public void setCategory(Category category) {
-		Category = category;
+		this.category = category;
 	}
 
 	public Author getAuthor() {
-		return Author;
+		return author;
 	}
 
 	public void setAuthor(Author author) {
-		Author = author;
+		this.author = author;
 	}
 
 	public Publisher getPublisher() {
-		return Publisher;
+		return publisher;
 	}
 
 	public void setPublisher(Publisher publisher) {
-		Publisher = publisher;
+		this.publisher = publisher;
 	}
 
 	public int getId() {
@@ -80,13 +112,12 @@ public class Book {
 		this.numberOfPage = numberOfPage;
 	}
 
-	public String getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
-	
 
 }

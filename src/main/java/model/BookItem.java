@@ -1,28 +1,51 @@
 package model;
 import java.util.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "bookitem")
 public class BookItem {
-
-	List<CartItem> CartItem;
-	Book Book;
+	@OneToMany(mappedBy = "bookItem")
+	List<CartItem> cartItems;
+	
+	@OneToOne(mappedBy = "bookItem")
+	Book book;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private int id;
+	
+	@Column(name = "image")
 	private String image;
+	
+	@Column(name = "priceCurrent")
 	private float priceCurrent;
+	
+	@Column(name = "discount")
 	private float discount;
+	
 	public BookItem() {
 		// TODO Auto-generated constructor stub
 	}
 	public List<CartItem> getCartItem() {
-		return CartItem;
+		return cartItems;
 	}
 	public void setCartItem(List<CartItem> cartItem) {
-		CartItem = cartItem;
+		this.cartItems = cartItem;
 	}
 	public Book getBook() {
-		return Book;
+		return book;
 	}
 	public void setBook(Book book) {
-		Book = book;
+		this.book = book;
 	}
 	public int getId() {
 		return id;

@@ -2,6 +2,7 @@ package DAO;
 
 import java.util.List;
 
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import model.Cart;
@@ -15,32 +16,46 @@ public class OrderImp extends DAO implements OrderDAO {
 
 	@Override
 	public Cart getMyCart(Customer c) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = session.createQuery("from Order o where c.customer.id = "+c.getId());
+		return (Cart)query.getSingleResult();
 	}
 
 	@Override
 	public void createCartItem(CartItem ci) {
-		// TODO Auto-generated method stub
+		Transaction trans = session.getTransaction();
+        if (!trans.isActive()) {
+            trans.begin();
+        }
+		session.save(ci);
+		trans.commit();
 		
 	}
 
 	@Override
 	public void updateCartItem(CartItem ci) {
-		// TODO Auto-generated method stub
+		Transaction trans = session.getTransaction();
+        if (!trans.isActive()) {
+            trans.begin();
+        }
+		session.update(ci);
+		trans.commit();
 		
 	}
 
 	@Override
 	public List<Order> getAllOrder(Customer c) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = session.createQuery("from Order o where o.customer.id = "+c.getId());
+		return (List<Order>)query.getResultList();
 	}
 
 	@Override
 	public void createOrder(Order o) {
-		// TODO Auto-generated method stub
-		
+		Transaction trans = session.getTransaction();
+        if (!trans.isActive()) {
+            trans.begin();
+        }
+		session.save(o);
+		trans.commit();
 	}
 
 	@Override

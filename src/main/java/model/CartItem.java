@@ -2,13 +2,37 @@ package model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "cartitem")
 public class CartItem {
-
-	Cart Cart;
-	BookItem BookItem;
+	@OneToOne
+	@JoinColumn(name = "CartID")
+	Cart cart;
+	
+	@OneToOne
+	@JoinColumn(name = "BookItemID")
+	BookItem bookItem;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private int id;
+	
+	@Column(name = "quantity")
 	private int quantity;
+	
+	@Column(name = "price")
 	private float price;
+	
+	@Column(name = "createdAt")
 	private Timestamp createdAt;
 
 	public CartItem() {
@@ -16,19 +40,19 @@ public class CartItem {
 	}
 
 	public Cart getCart() {
-		return Cart;
+		return cart;
 	}
 
 	public void setCart(Cart cart) {
-		Cart = cart;
+		this.cart = cart;
 	}
 
 	public BookItem getBookItem() {
-		return BookItem;
+		return bookItem;
 	}
 
 	public void setBookItem(BookItem bookItem) {
-		BookItem = bookItem;
+		this.bookItem = bookItem;
 	}
 
 	public int getId() {

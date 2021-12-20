@@ -36,9 +36,7 @@ public class FullName {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
-
-
-
+	
 	public User getUser() {
 		return user;
 	}

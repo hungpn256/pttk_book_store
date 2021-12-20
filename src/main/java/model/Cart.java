@@ -1,41 +1,71 @@
 package model;
 import java.util.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "cart")
 public class Cart {
-
-	Customer Customer;
-	Order Order;
-	List<CartItem> CartItem;
+	@OneToOne
+	@JoinColumn(name = "UserID")
+	Customer customer;
+	
+	@OneToOne
+	@JoinColumn(name = "OrderID")
+	Order order;
+	
+	@OneToMany(mappedBy = "cart")
+	List<CartItem> cartItems;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private int id;
+	
+	@Column(name = "status")
 	private String status;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public Customer getCustomer() {
-		return Customer;
+		return customer;
 	}
+
 
 	public void setCustomer(Customer customer) {
-		Customer = customer;
+		this.customer = customer;
 	}
+
 
 	public Order getOrder() {
-		return Order;
+		return order;
 	}
+
 
 	public void setOrder(Order order) {
-		Order = order;
+		this.order = order;
 	}
 
-	public List<CartItem> getCartItem() {
-		return CartItem;
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
 	}
 
-	public void setCartItem(List<CartItem> cartItem) {
-		CartItem = cartItem;
+
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
 	}
+
 
 	public int getId() {
 		return id;

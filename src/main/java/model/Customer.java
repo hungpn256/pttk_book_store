@@ -3,12 +3,16 @@ import java.util.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "customer")
 public class Customer extends User {
-//	List<Cart> Cart;
-//	List<Order> Order;
+	@OneToMany(mappedBy = "customer")
+	List<Cart> carts;
+	
+	@OneToMany(mappedBy = "customer")
+	List<Order> orders;
 	
 	@Column(name = "memberShip")
 	private String memberShip;
@@ -19,23 +23,23 @@ public class Customer extends User {
 	public Customer() {
 		super();
 	}
-
-//	public List<Cart> getCart() {
-//		return Cart;
-//	}
-//
-//	public void setCart(List<Cart> cart) {
-//		Cart = cart;
-//	}
-//
-//	public List<Order> getOrder() {
-//		return Order;
-//	}
-//
-//	public void setOrder(List<Order> order) {
-//		Order = order;
-//	}
-
+	
+	public List<Cart> getCarts() {
+		return carts;
+	}
+	
+	public void setCarts(List<Cart> carts) {
+		this.carts = carts;
+	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
 	public String getMemberShip() {
 		return memberShip;
 	}

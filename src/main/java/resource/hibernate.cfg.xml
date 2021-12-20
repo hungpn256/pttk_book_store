@@ -27,7 +27,18 @@
 	    <mapping class="model.User"/>  
 	    <mapping class="model.Customer"/>    
         <mapping class="model.Account"/>
-        <mapping class="model.FullName"/>
         <mapping class="model.Address"/>
+        <mapping class="model.Author"/>
+        <mapping class="model.Book"/>
+        <mapping class="model.BookItem"/>
+        <mapping class="model.Cart"/>
+        <mapping class="model.CartItem"/>
+        <mapping class="model.Category"/>
+        <mapping class="model.Order"/>
+        <mapping class="model.Payment"/>
+        <mapping class="model.Publisher"/>
+        <mapping class="model.Shipment"/>
+        <mapping class="model.Staff"/>
+        <mapping class="model.FullName"/>
 	</session-factory>
 </hibernate-configuration>

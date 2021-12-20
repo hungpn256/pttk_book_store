@@ -1,23 +1,40 @@
 package model;
 import java.util.*;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+@Entity
+@Table(name = "payment")
 public class Payment {
-
-	List<Order> Order;
+	@OneToMany(mappedBy = "payment")
+	List<Order> orders;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private int id;
+	
+	@Column(name = "name")
 	private String name;
+	
+	@Column(name = "type")
 	private String type;
 	
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Order> getOrder() {
-		return Order;
+	public List<Order> getOrders() {
+		return orders;
 	}
 
-	public void setOrder(List<Order> order) {
-		Order = order;
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	public int getId() {

@@ -2,17 +2,53 @@ package model;
 
 import java.sql.Timestamp;
 
-public class Order {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-	Customer Customer;
-	Payment Payment;
-	Shipment Shipment;
-	Cart Cart;
+@Entity
+@Table(name = "order")
+public class Order {
+	@ManyToOne
+	@JoinColumn(name = "UserID")
+	Customer customer;
+	
+	@ManyToOne
+    @JoinColumn(name = "PaymentID")
+	Payment payment;
+	
+	@ManyToOne
+    @JoinColumn(name = "ShipmentID")
+	Shipment shipment;
+	
+	@OneToOne(mappedBy = "order")
+	Cart cart;
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
 	private int id;
+	
+	@Column(name = "total")
 	private float total;
+	
+	@Column(name = "shipTo")
 	private String shipTo;
+	
+	@Column(name = "note")
 	private String note;
+	
+	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "createdAt")
 	private Timestamp createdAt;
 	
 	public Order() {
@@ -20,35 +56,35 @@ public class Order {
 	}
 
 	public Customer getCustomer() {
-		return Customer;
+		return customer;
 	}
 
 	public void setCustomer(Customer customer) {
-		Customer = customer;
+		this.customer = customer;
 	}
 
 	public Payment getPayment() {
-		return Payment;
+		return payment;
 	}
 
 	public void setPayment(Payment payment) {
-		Payment = payment;
+		this.payment = payment;
 	}
 
 	public Shipment getShipment() {
-		return Shipment;
+		return shipment;
 	}
 
 	public void setShipment(Shipment shipment) {
-		Shipment = shipment;
+		this.shipment = shipment;
 	}
 
 	public Cart getCart() {
-		return Cart;
+		return cart;
 	}
 
 	public void setCart(Cart cart) {
-		Cart = cart;
+		this.cart = cart;
 	}
 
 	public int getId() {
