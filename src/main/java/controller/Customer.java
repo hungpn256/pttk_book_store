@@ -28,7 +28,8 @@ public class Customer extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/home/index.jsp");
+		System.out.print(request.getParameter("q"));
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
 		dispatcher.forward(request, response);
 	}
 
