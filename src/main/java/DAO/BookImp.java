@@ -5,7 +5,7 @@ import org.hibernate.Transaction;
 import model.BookItem;
 
 public class BookImp extends DAO implements BookDAO {
-
+	// tao bookitem
 	@Override
 	public void createBookItem(BookItem b) {
 		Transaction trans = session.getTransaction();
@@ -31,7 +31,6 @@ public class BookImp extends DAO implements BookDAO {
         session.update(b.getBook());
         session.update(b);
 		trans.commit();
-		
 	}
 
 }
