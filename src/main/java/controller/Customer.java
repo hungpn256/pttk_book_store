@@ -29,7 +29,7 @@ public class Customer extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.print(request.getParameter("q"));
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/home/index.jsp");
 		dispatcher.forward(request, response);
 	}
 
