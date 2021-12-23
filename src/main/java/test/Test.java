@@ -21,9 +21,9 @@ public class Test {
 		c.setPhone("123");
 		c.setRole("customer");
 		
-		cu.createCustomer(c);
+//		cu.createCustomer(c);
 		Customer x = cu.customerLogin(acc);
-		x.getFullName().setFirstName("Hungkk");
+		x.getFullName().setFirstName("Hungkhungk");
 		cu.editCustomer(x);
 		cu.customerLogin(acc);
 	}

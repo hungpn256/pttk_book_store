@@ -95,14 +95,11 @@
                         <div class="intro">
                             <div class="block " id="content_ViewProducts">
                                 <div class="blockcontent">
-                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Bọc Plastic miễn
-                                            ph&iacute;&nbsp;</span></p>
-                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Giao h&agrave;ng miễn
-                                            ph&iacute; trong nội th&agrave;nh TP. HCM với đơn h&agrave;ng&nbsp; <span
-                                                style="color:#33cc33;"><strong>&ge; 150.000 đ</strong></span></span></p>
-                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Giao h&agrave;ng miễn
-                                            ph&iacute; to&agrave;n quốc với đơn h&agrave;ng <span
-                                                style="color:#33cc33;"><strong>&ge; 250.000 đ</strong></span></span></p>
+                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Bọc Plastic miễn phí </span></p>
+                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Giao hàng miễn phí trong nội thành TP. HCM với đơn hàng <span
+                                                style="color:#33cc33;"><strong>≥ 150.000 đ</strong></span></span></p>
+                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Giao hàng miễn phí toàn quốc với đơn hàng <span
+                                                style="color:#33cc33;"><strong>≥ 250.000 đ</strong></span></span></p>
                                 </div>
                             </div>
                         </div>
@@ -124,21 +121,13 @@
             </div>
             <!-- Giới thiệu sách -->
             <div class="block" id="module_ProductDetail">
-                <h3>Giới thiệu sách</h3>
+                <h3>Giới thiệu sách và tác giả</h3>
                 <div class="intro" id="contentid">
-                    <p><span style="color:#ff0000;"><span style="font-size:16px;">Thi&ecirc;n Quan Tứ Ph&uacute;c - Tập
-                                4&nbsp; ( k&egrave;m bookmak)</span></span></p>
-                    <p>Tạ Li&ecirc;n v&agrave; Sư Thanh Huyền tiếp tục truy t&igrave;m ch&acirc;n tướng của Bạch Thoại
-                        Ch&acirc;n Ti&ecirc;n, nhưng n&agrave;o ngờ lại bị cuốn về nơi biển khơi dậy s&oacute;ng, quỷ
-                        thần đối đầu, người ph&agrave;m cũng bị k&eacute;o v&agrave;o v&ograve;ng v&acirc;y. Cuối
-                        c&ugrave;ng sự thật h&eacute; lộ nơi Hắc Thủy Quỷ Vực, tội &aacute;c năm xưa bị phơi b&agrave;y.
+                    <p><span style="color:#ff0000;"><span style="font-size:16px;">Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)</span></span></p>
+                    <p>Tạ Liên và Sư Thanh Huyền tiếp tục truy tìm chân tướng của Bạch Thoại Chân Tiên, nhưng nào ngờ lại bị cuốn về nơi biển khơi dậy sóng, quỷ thần đối đầu, người phàm cũng bị kéo vào vòng vây. Cuối cùng sự thật hé lộ nơi Hắc Thủy Quỷ Vực, tội ác năm xưa bị phơi bày.
                     </p>
-                    <p>Kẻ vong mạng, người mất t&iacute;ch. C&ograve;n chưa r&otilde; liệu kết cục c&oacute; vẹn
-                        to&agrave;n, chuyện mới lại ập đến.</p>
-                    <p>N&uacute;i Đồng L&ocirc; mở rộng c&aacute;nh cửa, l&ocirc;i k&eacute;o ch&uacute;ng quỷ
-                        v&agrave;o một cuộc chiến t&agrave;n s&aacute;t h&ograve;ng tạo ra một Tuyệt Cảnh Quỷ Vương mới.
-                        Giữa l&uacute;c vạn quỷ xao động, Hoa Th&agrave;nh ph&aacute;p lực suy yếu, Th&iacute;ch Dung bỏ
-                        trốn, song song đ&oacute; lại xuất hiện th&ecirc;m một Cẩm Y Ti&ecirc;n&nbsp;</p>
+                    <p><span style="color:#ff0000;"><span style="font-size:16px;">Mặc Hương Đồng Khứu</span></span></p>
+                    <p>Mặc Hương Đồng Khứu tên thật là Viên Y Mi, sinh ngày 13/03/1994, nguyên quán: Chiết Giang, phạm tội Kinh doanh trái phép. ... Với tội danh này, Mặc Hương Đồng Khứu bị tuyên án 3 năm tù, được tạm tha vào đầu tháng 11/2021. Trước khi 'dính chàm', Mặc Hương Đồng Khứu là gương mặt nổi bật trong cộng đồng văn học mạng.</p>
                 </div>
             </div>
             <script>var contentid = $('#contentid'); var hieght = contentid.height(); $('#viewmore').hide(); if (hieght > 400) { contentid.addClass('collapse'); $('#viewmore').show(); } $('.viewmore').click(function () { if (contentid.hasClass('collapse')) { contentid.removeClass('collapse'); $('#viewmore span').empty(); $('#viewmore span').append('Thu gọn <i class="fa fa-sort-asc"></i>'); } else { contentid.addClass('collapse'); $('#viewmore span').empty(); $('#viewmore span').append('Xem thêm nội dung <i class="fa fa-sort-desc"></i>'); } });</script>
@@ -157,53 +146,29 @@
                     </tr>
                     <tr class="field_view_contenner row1">
                         <td class="title">
-                            <a href="/products/groupfield/2/phat-hanh.html" title="Phát hành">Phát hành</a>
-                        </td>
-                        <td class="values">
-                            <a href="/thuong-hieu/36/cam-phong.html" title="Cẩm Phong">Cẩm Phong</a>
-                        </td>
-                    </tr>
-                    <tr class="field_view_contenner row0">
-                        <td class="title">
                             <a href="/products/groupfield/4/nxb.html" title="NXB">NXB</a>
                         </td>
                         <td class="values">
                             Hà Nội
                         </td>
                     </tr>
-                    <tr class="field_view_contenner row1">
+                    <tr class="field_view_contenner row0">
                         <td class="title">
-                            Kích thước
+                            Nơi xuất bản
                         </td>
                         <td class="values">
-                            14,5cm x20,5 cm
+                            Số 4, Hoàng Mai, Hà Nội
+                        </td>
+                    </tr>
+                    <tr class="field_view_contenner row1">
+                        <td class="title">
+                            Số trang
+                        </td>
+                        <td class="values">
+                            1400
                         </td>
                     </tr>
                     <tr class="field_view_contenner row0">
-                        <td class="title">
-                            Trọng lượng
-                        </td>
-                        <td class="values">
-                            1500
-                        </td>
-                    </tr>
-                    <tr class="field_view_contenner row1">
-                        <td class="title">
-                            Lượt xem
-                        </td>
-                        <td class="values">
-                            192
-                        </td>
-                    </tr>
-                    <tr class="field_view_contenner row0">
-                        <td class="title">
-                            Ngày phát hành
-                        </td>
-                        <td class="values">
-                            01/12/2021
-                        </td>
-                    </tr>
-                    <tr class="field_view_contenner row1">
                         <td class="title">
                             Danh mục
                         </td>
