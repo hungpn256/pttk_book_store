@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +11,10 @@
     <script type='text/javascript' src='https://nobita.vn/layouts/system/js/jquery.boxy.js'></script>
     <script type="text/javascript">var app = '';</script>
     <style><%@include file="./style.css"%></style>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 </head>
 <body>
+	<%@include file="../header_footer/header.jsp"%>
     <div class="block banner " id="banner_TopHeader">
         <div class="blockcontent"></div>
     </div>
@@ -38,7 +40,7 @@
                     </div>
                     <div class="loginform">
                         <h3>Đăng nhập</h3>
-                        <form method="post" name="fgf" id="fgf" action="/users/processLogin/index.html"
+                        <form method="post"  action="<%= request.getContextPath() %>/login"
                             onSubmit="return ValidateForm(CheckForm);">
                             <div class="field">
                                 <div class="textlabel">
@@ -80,5 +82,6 @@
         <div class="clear"></div>
     </div>
     </div>
+    <%@include file="../header_footer/footer.jsp"%>
 </body>
 </html>

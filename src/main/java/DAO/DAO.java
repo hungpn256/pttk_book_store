@@ -11,7 +11,7 @@ public class DAO {
     public DAO() {
         if (session == null) {
             try {
-                session = new Configuration().configure(new File("src/main/java/resource/hibernate.cfg.xml"))
+                session = new Configuration().configure(new File("hibernate.cfg.xml"))
                         .buildSessionFactory().openSession();
             } catch (HibernateException ex) {
                 ex.printStackTrace();

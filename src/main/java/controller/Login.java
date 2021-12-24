@@ -8,6 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.CustomerDAO;
+import DAO.CustomerImp;
+import model.Account;
+import model.Customer;
 
 /**
  * Servlet implementation class Login
@@ -38,7 +44,22 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		System.out.println(username+password);
+		CustomerImp ci = new CustomerImp();
+		try {
+			Customer customer = ci.customerLogin(new Account(username, password));
+			System.out.println(customer.getId()+"idd");
+			HttpSession session = request.getSession();
+			session.setAttribute("customer", customer);
+			response.sendRedirect(request.getContextPath()+"/home");
+		}
+		catch (Exception e) {
+			response.sendError(401,"Username password không hợp lệ");
+		}
+		
+		
 	}
 
 }
