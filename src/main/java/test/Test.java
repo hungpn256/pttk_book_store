@@ -24,7 +24,7 @@ public class Test {
 		cu.createCustomer(c);
 		c.getId();
 		Customer x = cu.customerLogin(acc);
-		x.getFullName().setFirstName("Hungkk");
+		x.getFullName().setFirstName("Hungkhungk");
 		cu.editCustomer(x);
 		cu.customerLogin(acc);
 	}
