@@ -1,8 +1,13 @@
 package DAO;
 
+import java.util.List;
+
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import model.BookItem;
+import model.Category;
+import model.Customer;
 
 public class BookImp extends DAO implements BookDAO {
 	// tao bookitem
@@ -31,6 +36,23 @@ public class BookImp extends DAO implements BookDAO {
         session.update(b.getBook());
         session.update(b);
 		trans.commit();
+	}
+
+	@Override
+	public BookItem getBookById(int id) {
+		BookItem result = null;
+		Query query = session.createQuery("from BookItem b where b.id = "+id);
+		System.out.print(query.toString());
+		result = (BookItem)query.getSingleResult();
+		return result;
+	}
+
+	@Override
+	public List<Category> getAllCategory() {
+		List<Category> result = null;
+		Query query = session.createQuery("from Category");
+		result = (List<Category>)query.getResultList();
+		return result;
 	}
 
 }
