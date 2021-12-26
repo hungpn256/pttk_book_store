@@ -42,7 +42,7 @@
                             <li><a href="#" class="havechild" 8 target="_self">Thưởng thức đời sống</a></li>
                             <li><a href="#" class="havechild" 8 target="_self">Sách chuyên ngành</a></li>
                             <li><a href="#" class="havechild" 8 target="_self">Văn phòng phẩm - Quà tặng</a></li>
-                            <li class="-bold"><a href="#" class="havechild" 0 target="_self">Công ty phát hành</a></li>
+                            <li class="-bold"><a href="#" class="havechild" 0 target="_self">Nhà xuất bản</a></li>
                         </ul>
                     </div>
                     <div class="hotline">
@@ -68,9 +68,9 @@
             <div class="mainbaner">
                 <div id="slider-wrapper">
                     <ul class="bxslider">
-                        <li><a href="#" target="_self"><img height="397" src="/img/slider1.jpg" title="SCI FULL"></a>
+                        <li><a href="#" target="_self"><img height="397" src="https://salt.tikicdn.com/cache/w1080/ts/banner/bd/2e/02/104e3d47aeb3adccd2bcef0a1abe9056.png.webp" title="SCI FULL"></a>
                         </li>
-                        <li><a href="#" target="_self"><img height="397" src="/img/slider2.jpg"
+                        <li><a href="#" target="_self"><img height="397" src="https://salt.tikicdn.com/cache/w1080/ts/banner/36/7a/a7/f91940ba4ff1eda8ed00c3576f3930b2.jpg.webp"
                                     title="The Vi Thuong"></a></li>
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
         </div>
         <!-- Product -->
         <div class="sortable" id="layoutGroup1">
-            <div class="block" id="module_newproducts">
+            <div class="block" id="module_newbook">
                 <h2>
                     <a class="title" href="#" title="Sách mới">Sách mới<span class="b-main__category-arrow"></span></a>
                     <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
@@ -155,9 +155,9 @@
                         <div class="clear"></div>
                     </div>
                 </div>
-                <div class="block" id="module_publishing">
+                <div class="block" id="module_cheap">
                     <h2>
-                        <a class="title" href="#" title="Sắp phát hành">Sắp phát hành<span
+                        <a class="title" href="#" title="Giá thấp">Giá thấp<span
                                 class="b-main__category-arrow"></span></a>
                         <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
                     </h2>
@@ -238,9 +238,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="block" id="module_bestseller">
+                    <div class="block" id="module_expensive">
                         <h2>
-                            <a class="title" href="#" title="Sách bán chạy">Sách bán chạy<span
+                            <a class="title" href="#" title="Giá cao">Giá cao<span
                                     class="b-main__category-arrow"></span></a>
                             <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
                         </h2>

@@ -2,6 +2,7 @@ package DAO;
 
 import org.hibernate.Transaction;
 
+import model.Book;
 import model.BookItem;
 
 public class BookImp extends DAO implements BookDAO {
@@ -32,5 +33,4 @@ public class BookImp extends DAO implements BookDAO {
         session.update(b);
 		trans.commit();
 	}
-
 }
