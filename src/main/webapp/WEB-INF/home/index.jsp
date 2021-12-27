@@ -31,18 +31,9 @@
                             <h2>Danh mục sản phẩm</h2>
                         </span>
                         <ul class="submenu0" id="submenu0">
-                            <li class="group"><a href="javascript:" class="havechild" 4>Nổi bật</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách kinh tế</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Văn học nước ngoài</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Văn học trong nước</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách kỹ năng sống</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách tuổi teen</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Học ngoại ngữ</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách thiếu nhi</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Thưởng thức đời sống</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách chuyên ngành</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Văn phòng phẩm - Quà tặng</a></li>
-                            <li class="-bold"><a href="#" class="havechild" 0 target="_self">Công ty phát hành</a></li>
+                        <c:forEach var="category" items="${categories}">
+                        	<li><a href="#" class="havechild" 8 target="_self"><c:out value="${category.name }" /></a></li>
+                        </c:forEach>
                         </ul>
                     </div>
                     <div class="hotline">
@@ -329,107 +320,19 @@
                             </h2>
                             <div class="blockcontent">
                                 <div style="position:relative; padding:0; overflow:hidden; margin-left:-4%">
-                                    <div class="category_contener">
+                                <c:forEach var="category" items="${categories}">
+                                	<div class="category_contener">
                                         <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
+                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img style="object-fit: cover"
+                                                        src="<c:out value="${ category.image}"/>" alt="" title="" /></a>
                                             </div>
                                             <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
+                                                <a href="/danh-muc/1/sach-kinh-te.html" title=""><c:out value="${ category.name}"></c:out></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="category_contener">
-                                        <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img
-                                                        src="/img/book2.jpg" alt="" title="" /></a>
-                                            </div>
-                                            <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title="">Văn học nước ngoài</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
+                                </c:forEach>
+                                <div class="clear"></div>
                                 </div>
                             </div>
                         </div>

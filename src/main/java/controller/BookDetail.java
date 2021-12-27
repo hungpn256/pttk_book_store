@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.BookImp;
+import model.BookItem;
+
 /**
  * Servlet implementation class BookDetail
  */
@@ -30,6 +33,11 @@ public class BookDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/book-detail/index.jsp");
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		BookImp bi = new BookImp();
+		BookItem bookItem = bi.getBookById(id);
+		request.setAttribute("bookItem", bookItem);
 		dispatcher.forward(request, response);
 	}
 
