@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,18 +43,23 @@ public class FilterBook extends HttpServlet {
 		Customer customer = (Customer)session.getAttribute("customer");
 		request.setAttribute("customer", customer);
 		BookImp bi = new BookImp();
-		List<BookItem> bookItems;
+		List<BookItem> bookItems = new ArrayList<BookItem>();
 		Category category;
 		if(request.getParameter("id") != null) {
 			int id = Integer.parseInt(request.getParameter("id"));		
 			bookItems = bi.getBookByIdCategory(id);
 			category = bi.getCategoryById(id);
 			request.setAttribute("category", category);
-			bookItems = bi.getBookByIdAuthor(id);
-			bookItems = bi.getBookByIdPublisher(id);
-		}else {
+		}else if( request.getParameter("q") != null) {
 			String q = request.getParameter("q");
 			bookItems = bi.searchByName(q);
+		}
+		else if(request.getParameter("authorid") != null) {
+			int id = Integer.parseInt(request.getParameter("authorid"));	
+			bookItems = bi.getBookByIdAuthor(id);
+		}else if (request.getParameter("publisherid") != null) {
+			int id = Integer.parseInt(request.getParameter("publisherid"));	
+			bookItems = bi.getBookByIdPublisher(id);
 		}
 		request.setAttribute("bookItems", bookItems);
 		List<Category> categories = bi.getAllCategory();

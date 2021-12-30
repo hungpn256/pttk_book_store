@@ -64,9 +64,9 @@
                         <div class="showboxfield">
                             <ul>
                             	<c:forEach var="author" items="${authors}">
-                                	<a href="<%= request.getContextPath() %>/filter-book?id=<c:out value="${author.id }" />" title="Nguyễn Nhật Ánh">
+                                	<a href="<%= request.getContextPath() %>/filter-book?authorid=<c:out value="${author.id }" />" title="Nguyễn Nhật Ánh">
                         				<li class="checkbox">
-                                        	<i class="fa fa-square-o"></i><c:out value="${author.name }" />
+                                        	<c:out value="${author.name }" />
                                         	<span class="delete"></span>
                                     	</li>
                                 	</a>
@@ -81,9 +81,9 @@
                         <div class="showboxfield">
                             <ul>
                             	<c:forEach var="publisher" items="${publishers}">
-                        			<a href="<%= request.getContextPath() %>/filter-book?id=<c:out value="${publisher.id }" />" title="Bách Việt">
+                        			<a href="<%= request.getContextPath() %>/filter-book?publisherid=<c:out value="${publisher.id }" />" title="Bách Việt">
                                     	<li class="checkbox">
-                                        	<i class="fa fa-square-o"></i><c:out value="${publisher.name }" />
+                                        	<c:out value="${publisher.name }" />
                                         	<span class="delete"></span>
                                     	</li>
                                 	</a>
