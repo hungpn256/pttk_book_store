@@ -20,6 +20,7 @@
     <style><%@include file="./style.css"%></style>
 </head>
 <body>
+
     <div id="header">
         <div id="mainmenu">
             <div id="container">
@@ -29,20 +30,6 @@
                         <span>
                             <h2>Danh mục sản phẩm</h2>
                         </span>
-                        <ul class="submenu0" id="submenu0">
-                            <li class="group"><a href="javascript:" class="havechild" 4>Nổi bật</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách kinh tế</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Văn học nước ngoài</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Văn học trong nước</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách kỹ năng sống</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách tuổi teen</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Học ngoại ngữ</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách thiếu nhi</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Thưởng thức đời sống</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Sách chuyên ngành</a></li>
-                            <li><a href="#" class="havechild" 8 target="_self">Văn phòng phẩm - Quà tặng</a></li>
-                            <li class="-bold"><a href="#" class="havechild" 0 target="_self">Công ty phát hành</a></li>
-                        </ul>
                     </div>
                     <div class="hotline">
                         <strong><span style="color:#000000;"><span
@@ -61,32 +48,32 @@
             <div class="product_view_contener">
                 <div class="showleft">
                     <div class="product_info">
-                        <h1>Thiên Quan Tứ Phúc - Tập 4 ( kèm bookmak)</h1>
-                        <div class="groups">
-                            <div class="viewfields">
-                                <span>Tác giả: <a href="/thuong-hieu/1585/mac-huong-dong-khuu.html"
-                                        title="Mặc Hương Đồng Khứu">Mặc Hương Đồng Khứu</a></span> <span>Phát hành: <a
-                                        href="/thuong-hieu/36/cam-phong.html" title="Cẩm Phong">Cẩm Phong</a></span>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="groups">
-                            <div class="write_comment">
-                                <a href="#comment"><i class="fa fa-pencil"></i> Gửi nhật xét của bạn</a>
-                            </div>
-                            <div class="add_wishlist">
-                                <a href="/orders/addwishlist/3616/thien-quan-tu-phuc-tap-4-kem-bookmak-.html"><i
+                        	<h1><c:out value="${bookItem.book.title }" /></h1>                                             
+                        	<div class="groups">
+                            	<div class="viewfields">
+                                	<span>Tác giả: <a href="/thuong-hieu/1585/mac-huong-dong-khuu.html"
+                                        title="Mặc Hương Đồng Khứu"><c:out value="${bookItem.book.author.name }" /></a></span> <span>Nhà xuất bản: <a
+                                        href="/thuong-hieu/36/cam-phong.html" title="Cẩm Phong"><c:out value="${bookItem.book.publisher.name }" /></a></span>
+                            	</div>
+                        		<div class="clear"></div>
+                        	</div>
+                        	<div class="groups">
+                            	<div class="write_comment">
+                                	<a href="#comment"><i class="fa fa-pencil"></i> Gửi nhật xét của bạn</a>
+                            	</div>
+                            	<div class="add_wishlist">
+                                	<a href="/orders/addwishlist/3616/thien-quan-tu-phuc-tap-4-kem-bookmak-.html"><i
                                         class="fa fa-star"></i> Thêm vào yêu thích</a>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="prices_contener">
-                            <div class="prices">
-                                <div class="saleprice">
-                                    <span id="saleprice">130.380 ₫</span>
-                                </div>
-                                <div class="vrootprice" id="rootprice"></span></div>
-                            </div>
+                            	</div>
+                            	<div class="clear"></div>
+                        	</div>
+                        	<div class="prices_contener">
+                            	<div class="prices">
+                                	<div class="saleprice">
+                                    	<span id="saleprice"><c:out value="${Math.round(bookItem.priceCurrent * (1 - bookItem.discount)) }" /> đ</span>
+                                	</div>
+                                	<div class="vrootprice" id="rootprice"></span></div>
+                            	</div>
                             <div class="goshop">
                                 <a href="javascript:" onclick="addCart();">Mua ngay</a>
                             </div>
@@ -108,7 +95,7 @@
                 </div>
                 <div class="image_contenner">
                     <div class="mainimage">
-                        <img src="http://nobita.vn/stores/uploads/h/ximage_195509_1_16165__01879_thum_135.jpg.pagespeed.ic.CTR_BBJla5.webp" alt="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" id="mainimage"
+                        <img src="<c:out value="${ bookItem.image}"/>" alt="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" id="mainimage"
                             width="250" data-pagespeed-url-hash="2834330872"
                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
                     </div>
@@ -123,11 +110,10 @@
             <div class="block" id="module_ProductDetail">
                 <h3>Giới thiệu sách và tác giả</h3>
                 <div class="intro" id="contentid">
-                    <p><span style="color:#ff0000;"><span style="font-size:16px;">Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)</span></span></p>
-                    <p>Tạ Liên và Sư Thanh Huyền tiếp tục truy tìm chân tướng của Bạch Thoại Chân Tiên, nhưng nào ngờ lại bị cuốn về nơi biển khơi dậy sóng, quỷ thần đối đầu, người phàm cũng bị kéo vào vòng vây. Cuối cùng sự thật hé lộ nơi Hắc Thủy Quỷ Vực, tội ác năm xưa bị phơi bày.
-                    </p>
-                    <p><span style="color:#ff0000;"><span style="font-size:16px;">Mặc Hương Đồng Khứu</span></span></p>
-                    <p>Mặc Hương Đồng Khứu tên thật là Viên Y Mi, sinh ngày 13/03/1994, nguyên quán: Chiết Giang, phạm tội Kinh doanh trái phép. ... Với tội danh này, Mặc Hương Đồng Khứu bị tuyên án 3 năm tù, được tạm tha vào đầu tháng 11/2021. Trước khi 'dính chàm', Mặc Hương Đồng Khứu là gương mặt nổi bật trong cộng đồng văn học mạng.</p>
+                    	<p><span style="color:#ff0000;"><span style="font-size:16px;"><c:out value="${bookItem.book.title }" /></span></span></p>
+                    	<p><c:out value="${bookItem.book.description }" /></p>
+                    	<p><span style="color:#ff0000;"><span style="font-size:16px;"><c:out value="${bookItem.book.author.name }" /></span></span></p>
+                    	<p><c:out value="${bookItem.book.author.bio }" /></p>
                 </div>
             </div>
             <script>var contentid = $('#contentid'); var hieght = contentid.height(); $('#viewmore').hide(); if (hieght > 400) { contentid.addClass('collapse'); $('#viewmore').show(); } $('.viewmore').click(function () { if (contentid.hasClass('collapse')) { contentid.removeClass('collapse'); $('#viewmore span').empty(); $('#viewmore span').append('Thu gọn <i class="fa fa-sort-asc"></i>'); } else { contentid.addClass('collapse'); $('#viewmore span').empty(); $('#viewmore span').append('Xem thêm nội dung <i class="fa fa-sort-desc"></i>'); } });</script>
@@ -135,13 +121,13 @@
                 <a name="fieldlist"></a>
                 <h3>Thông tin chi tiết</h3>
                 <table class="fields" cellpadding="0" cellspacing="0" width="100%">
+                	
                     <tr class="field_view_contenner row0">
                         <td class="title">
-                            <a href="/products/groupfield/1/tac-gia.html" title="Tác giả">Tác giả</a>
+                            <a href="/products/groupfield/1/tac-gia.html" title="Tác giả"><c:out value="${bookItem.book.title }" /></a>
                         </td>
                         <td class="values">
-                            <a href="/thuong-hieu/1585/mac-huong-dong-khuu.html" title="Mặc Hương Đồng Khứu">Mặc Hương
-                                Đồng Khứu</a>
+                            <a href="/thuong-hieu/1585/mac-huong-dong-khuu.html" title="Mặc Hương Đồng Khứu"><c:out value="${bookItem.book.author.name }" /></a>
                         </td>
                     </tr>
                     <tr class="field_view_contenner row1">
@@ -149,7 +135,7 @@
                             <a href="/products/groupfield/4/nxb.html" title="NXB">NXB</a>
                         </td>
                         <td class="values">
-                            Hà Nội
+                            <c:out value="${bookItem.book.publisher.name }" />
                         </td>
                     </tr>
                     <tr class="field_view_contenner row0">
@@ -157,7 +143,7 @@
                             Nơi xuất bản
                         </td>
                         <td class="values">
-                            Số 4, Hoàng Mai, Hà Nội
+                            <c:out value="${bookItem.book.publisher.address }" />
                         </td>
                     </tr>
                     <tr class="field_view_contenner row1">
@@ -165,7 +151,7 @@
                             Số trang
                         </td>
                         <td class="values">
-                            1400
+                            <c:out value="${bookItem.book.numberOfPage }" />
                         </td>
                     </tr>
                     <tr class="field_view_contenner row0">
@@ -173,8 +159,7 @@
                             Danh mục
                         </td>
                         <td class="values">
-                            <a href="/danh-muc/14/tieu-thuyet-dam-my.html" title="Tiểu thuyết đam mỹ">Tiểu thuyết đam
-                                mỹ</a>
+                            <a href="/danh-muc/14/tieu-thuyet-dam-my.html" title="Tiểu thuyết đam mỹ"><c:out value="${bookItem.book.category.name }" /></a>
                         </td>
                     </tr>
                 </table>
@@ -182,5 +167,6 @@
                     <a href="javascript:" onclick="addCart();">Mua ngay</a>
                 </div>
             </div>
+            
 </body>
 </html>
