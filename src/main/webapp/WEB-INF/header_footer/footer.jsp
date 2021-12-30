@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Đăng nhập</title>
-    <style><%@include file="./style.css"%></style>
 </head>
 <body>
     <div id="footer">

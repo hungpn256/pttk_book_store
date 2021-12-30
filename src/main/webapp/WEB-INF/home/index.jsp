@@ -21,6 +21,7 @@
     <style><%@include file="./style.css"%></style>
 </head>
 <body>
+<%@include file="../header_footer/header.jsp"%>
 	<div id="header">
         <div id="mainmenu">
             <div id="container">
@@ -32,7 +33,7 @@
                         </span>
                         <ul class="submenu0" id="submenu0">
                         <c:forEach var="category" items="${categories}">
-                        	<li><a href="#" class="havechild" 8 target="_self"><c:out value="${category.name }" /></a></li>
+                        	<li><a href="<%= request.getContextPath() %>/filter-book?id=<c:out value="${category.id }" />" class="havechild" 8 target="_self"><c:out value="${category.name }" /></a></li>
                         </c:forEach>
                         </ul>
                     </div>
@@ -59,9 +60,9 @@
             <div class="mainbaner">
                 <div id="slider-wrapper">
                     <ul class="bxslider">
-                        <li><a href="#" target="_self"><img height="397" src="/img/slider1.jpg" title="SCI FULL"></a>
+                        <li><a href="#" target="_self"><img height="397" src="https://salt.tikicdn.com/cache/w1080/ts/banner/bd/2e/02/104e3d47aeb3adccd2bcef0a1abe9056.png.webp" title="SCI FULL"></a>
                         </li>
-                        <li><a href="#" target="_self"><img height="397" src="/img/slider2.jpg"
+                        <li><a href="#" target="_self"><img height="397" src="https://salt.tikicdn.com/cache/w1080/ts/banner/36/7a/a7/f91940ba4ff1eda8ed00c3576f3930b2.jpg.webp"
                                     title="The Vi Thuong"></a></li>
                     </ul>
                 </div>
@@ -69,261 +70,102 @@
         </div>
         <!-- Product -->
         <div class="sortable" id="layoutGroup1">
-            <div class="block" id="module_newproducts">
+            <div class="block" id="module_newbook">
                 <h2>
-                    <a class="title" href="#" title="Sách mới">Sách mới<span class="b-main__category-arrow"></span></a>
-                    <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
+                	<a class="title" href="#" title="Sách mới">Sách mới<span class="b-main__category-arrow"></span></a>
+                   	<a class="more" href="#" title="Xem tất cả">Xem tất cả</a> 	
                 </h2>
                 <div class="blockcontent">
                     <div class="newproducts" style="position:relative; padding:0 20px; overflow:hidden; height:340px;">
                         <div id="ajaxncontainer">
-                            <div class="product_contener">
+                        	<c:forEach var="bookItem" items="${bis}">
+                        		<div class="product_contener" style="width:19%">
                                 <div class="products">
-                                    <div class="image"><a href="#"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img src="/img/book3.jpg"
+                                    <div class="image"><a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />"
+                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
                                                 alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
                                     <div class="productname">
-                                        <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                            Phúc - Tập 4 ( kèm bookmak)</a>
+                                        <a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">
+                                        <c:out value="${bookItem.book.title }" />
+                                        </a>
                                     </div>
-                                    <div class="prices">130.380 ₫</div>
-                                    <div class="rootprice">159.000 ₫</div>
+                                    <div class="prices"><c:out value="${Math.round(bookItem.priceCurrent * (1 - bookItem.discount)) }" /> đ</div>
+                                    <c:if test="${bookItem.discount > 0 }">
+                                    	<div class="rootprice"><c:out value="${Math.round(bookItem.priceCurrent) }" />đ</div>
+                                    </c:if>
                                 </div>
                             </div>
-                            <div class="product_contener">
-                                <div class="products">
-                                    <div class="image"><a href="#"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img src="/img/book3.jpg"
-                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                    <div class="productname">
-                                        <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                            Phúc - Tập 4 ( kèm bookmak)</a>
-                                    </div>
-                                    <div class="prices">130.380 ₫</div>
-                                    <div class="rootprice">159.000 ₫</div>
-                                </div>
-                            </div>
-                            <div class="product_contener">
-                                <div class="products">
-                                    <div class="image"><a href="#"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img src="/img/book3.jpg"
-                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                    <div class="productname">
-                                        <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                            Phúc - Tập 4 ( kèm bookmak)</a>
-                                    </div>
-                                    <div class="prices">130.380 ₫</div>
-                                    <div class="rootprice">159.000 ₫</div>
-                                </div>
-                            </div>
-                            <div class="product_contener">
-                                <div class="products">
-                                    <div class="image"><a href="#"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img src="/img/book3.jpg"
-                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                    <div class="productname">
-                                        <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                            Phúc - Tập 4 ( kèm bookmak)</a>
-                                    </div>
-                                    <div class="prices">130.380 ₫</div>
-                                    <div class="rootprice">159.000 ₫</div>
-                                </div>
-                            </div>
-                            <div class="product_contener">
-                                <div class="products">
-                                    <div class="image"><a href="#"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img src="/img/book3.jpg"
-                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                    <div class="productname">
-                                        <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                            Phúc - Tập 4 ( kèm bookmak)</a>
-                                    </div>
-                                    <div class="prices">130.380 ₫</div>
-                                    <div class="rootprice">159.000 ₫</div>
-                                </div>
-                            </div>
-                        </div>
+                        	</c:forEach>
+                           </div>
                         <div class="clear"></div>
                     </div>
                 </div>
-                <div class="block" id="module_publishing">
+                <div class="block" id="module_cheap">
                     <h2>
-                        <a class="title" href="#" title="Sắp phát hành">Sắp phát hành<span
-                                class="b-main__category-arrow"></span></a>
+                        <a class="title" href="#" title="Giá thấp">Giá thấp<span class="b-main__category-arrow"></span></a>
                         <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
                     </h2>
                     <div class="blockcontent">
                         <div class="publishing"
                             style="position:relative; padding:0 20px; overflow:hidden; height:340px;">
                             <div id="ajaxncontainer">
-                                <div class="product_contener">
-                                    <div class="products">
-                                        <div class="image"><a href="#"
-                                                title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                    src="/img/book1.jpg" alt="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                        <div class="productname">
-                                            <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                                Phúc - Tập 4 ( kèm bookmak)</a>
-                                        </div>
-                                        <div class="prices">130.380 ₫</div>
-                                        <div class="rootprice">159.000 ₫</div>
+                              <c:forEach var="bookItem" items="${bookCheaps}">
+                        		<div class="product_contener" style="width:19%">
+                                <div class="products">
+                                    <div class="image"><a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />"
+                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
+                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
+                                    <div class="productname">
+                                        <a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><c:out value="${bookItem.book.title }" /></a>
                                     </div>
-                                </div>
-                                <div class="product_contener">
-                                    <div class="products">
-                                        <div class="image"><a href="#"
-                                                title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                    src="/img/book1.jpg" alt="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                        <div class="productname">
-                                            <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                                Phúc - Tập 4 ( kèm bookmak)</a>
-                                        </div>
-                                        <div class="prices">130.380 ₫</div>
-                                        <div class="rootprice">159.000 ₫</div>
-                                    </div>
-                                </div>
-                                <div class="product_contener">
-                                    <div class="products">
-                                        <div class="image"><a href="#"
-                                                title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                    src="/img/book1.jpg" alt="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                        <div class="productname">
-                                            <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                                Phúc - Tập 4 ( kèm bookmak)</a>
-                                        </div>
-                                        <div class="prices">130.380 ₫</div>
-                                        <div class="rootprice">159.000 ₫</div>
-                                    </div>
-                                </div>
-                                <div class="product_contener">
-                                    <div class="products">
-                                        <div class="image"><a href="#"
-                                                title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                    src="/img/book1.jpg" alt="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                        <div class="productname">
-                                            <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                                Phúc - Tập 4 ( kèm bookmak)</a>
-                                        </div>
-                                        <div class="prices">130.380 ₫</div>
-                                        <div class="rootprice">159.000 ₫</div>
-                                    </div>
-                                </div>
-                                <div class="product_contener">
-                                    <div class="products">
-                                        <div class="image"><a href="#"
-                                                title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                    src="/img/book1.jpg" alt="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                        <div class="productname">
-                                            <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên Quan Tứ
-                                                Phúc - Tập 4 ( kèm bookmak)</a>
-                                        </div>
-                                        <div class="prices">130.380 ₫</div>
-                                        <div class="rootprice">159.000 ₫</div>
-                                    </div>
+                                    <div class="prices"><c:out value="${Math.round(bookItem.priceCurrent * (1 - bookItem.discount)) }" /> đ</div>
+                                    <c:if test="${bookItem.discount > 0 }">
+                                    	<div class="rootprice"><c:out value="${Math.round(bookItem.priceCurrent) }" />đ</div>
+                                    </c:if>
                                 </div>
                             </div>
+                        	</c:forEach>
                         </div>
                     </div>
-                    <div class="block" id="module_bestseller">
+                    <div class="block" id="module_expensive">
                         <h2>
-                            <a class="title" href="#" title="Sách bán chạy">Sách bán chạy<span
-                                    class="b-main__category-arrow"></span></a>
+                            <a class="title" href="#" title="Giá cao">Giá cao<span class="b-main__category-arrow"></span></a>
                             <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
                         </h2>
                         <div class="blockcontent">
                             <div class="bestseller"
                                 style="position:relative; padding:0 20px; overflow:hidden; height:340px;">
                                 <div id="bajaxcontainer">
-                                    <div class="product_contener">
-                                        <div class="products">
-                                            <div class="image"><a href="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                        src="/img/book1.jpg" alt="#"
-                                                        title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                            <div class="productname">
-                                                <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên
-                                                    Quan Tứ Phúc - Tập 4 ( kèm bookmak)</a>
-                                            </div>
-                                            <div class="prices">130.380 ₫</div>
-                                            <div class="rootprice">159.000 ₫</div>
-                                        </div>
-                                    </div>
-                                    <div class="product_contener">
-                                        <div class="products">
-                                            <div class="image"><a href="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                        src="/img/book1.jpg" alt="#"
-                                                        title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                            <div class="productname">
-                                                <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên
-                                                    Quan Tứ Phúc - Tập 4 ( kèm bookmak)</a>
-                                            </div>
-                                            <div class="prices">130.380 ₫</div>
-                                            <div class="rootprice">159.000 ₫</div>
-                                        </div>
-                                    </div>
-                                    <div class="product_contener">
-                                        <div class="products">
-                                            <div class="image"><a href="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                        src="/img/book1.jpg" alt="#"
-                                                        title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                            <div class="productname">
-                                                <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên
-                                                    Quan Tứ Phúc - Tập 4 ( kèm bookmak)</a>
-                                            </div>
-                                            <div class="prices">130.380 ₫</div>
-                                            <div class="rootprice">159.000 ₫</div>
-                                        </div>
-                                    </div>
-                                    <div class="product_contener">
-                                        <div class="products">
-                                            <div class="image"><a href="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                        src="/img/book1.jpg" alt="#"
-                                                        title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                            <div class="productname">
-                                                <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên
-                                                    Quan Tứ Phúc - Tập 4 ( kèm bookmak)</a>
-                                            </div>
-                                            <div class="prices">130.380 ₫</div>
-                                            <div class="rootprice">159.000 ₫</div>
-                                        </div>
-                                    </div>
-                                    <div class="product_contener">
-                                        <div class="products">
-                                            <div class="image"><a href="#"
-                                                    title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img
-                                                        src="/img/book1.jpg" alt="#"
-                                                        title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
-                                            <div class="productname">
-                                                <a href="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">Thiên
-                                                    Quan Tứ Phúc - Tập 4 ( kèm bookmak)</a>
-                                            </div>
-                                            <div class="prices">130.380 ₫</div>
-                                            <div class="rootprice">159.000 ₫</div>
-                                        </div>
-                                    </div>
+                                	<c:forEach var="bookItem" items="${bookExpensives}">
+                        				<div class="product_contener" style="width:19%">
+                                			<div class="products">
+                                    			<div class="image"><a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />"
+                                            		title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
+                                                	alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
+                                    		<div class="productname">
+                                        			<a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><c:out value="${bookItem.book.title }" /></a>
+                                    		</div>
+                                    		<div class="prices"><c:out value="${Math.round(bookItem.priceCurrent * (1 - bookItem.discount)) }" /> đ</div>
+                                    		<c:if test="${bookItem.discount > 0 }">
+                                    			<div class="rootprice"><c:out value="${Math.round(bookItem.priceCurrent) }" />đ</div>
+                                    		</c:if>
+                                			</div>
+                            			</div>
+                        			</c:forEach>
                                 </div>
                             </div>
                         </div>
                         <div class="block" id="module_topcategories">
                             <h2>
-                                <a class="title" href="#" title="Danh mục">Danh mục<span
-                                        class="b-main__category-arrow"></span></a>
-                                <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
+                                <a class="title" href="<%= request.getContextPath() %>/filter-book" title="Danh mục">Danh mục<span class="b-main__category-arrow"></span></a>
+                                <a class="more" href="<%= request.getContextPath() %>/filter-book" title="Xem tất cả">Xem tất cả</a>
                             </h2>
                             <div class="blockcontent">
                                 <div style="position:relative; padding:0; overflow:hidden; margin-left:-4%">
                                 <c:forEach var="category" items="${categories}">
                                 	<div class="category_contener">
                                         <div class="categories">
-                                            <div class="image"><a href="/danh-muc/1/sach-kinh-te.html" title=""><img style="object-fit: cover"
+                                            <div class="image"><a href="<%= request.getContextPath() %>/filter-book?id=<c:out value="${category.id }" />" title=""><img style="object-fit: cover"
                                                         src="<c:out value="${ category.image}"/>" alt="" title="" /></a>
                                             </div>
                                             <div class="catname">
@@ -336,5 +178,6 @@
                                 </div>
                             </div>
                         </div>
+                        <%@include file="../header_footer/footer.jsp"%>
 </body>
 </html>

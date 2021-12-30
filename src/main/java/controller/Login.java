@@ -35,6 +35,8 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.removeAttribute("customer");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login/index.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -44,6 +46,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		System.out.println(username+password);
@@ -51,7 +54,7 @@ public class Login extends HttpServlet {
 		try {
 			Customer customer = ci.customerLogin(new Account(username, password));
 			System.out.println(customer.getId()+"idd");
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("customer", customer);
 			response.sendRedirect(request.getContextPath()+"/home");
 		}

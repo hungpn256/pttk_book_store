@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>Đăng nhập</title>
-    <style><%@include file="./style.css"%></style>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 </head>
 <body>
@@ -30,26 +29,26 @@
                         </form>
                         <div class="autocomplete" id="autocomplete"></div>
                     </div>
-                    <c:if test="customer != null">
+                    <c:if test="${customer != null }">
 	                    <div class="shoptool">
 	                        <ul class="right_topbar">
 	                            <li>
 	                                <div class="textlable" title="Tài khoản của bạn">
-	                                    <c:out value="${customer.fullName.firstName }"></c:out> <i class="fa fa-sort-desc"></i>
+	                                    <c:out value="${customer.fullName.firstName }"></c:out>
 	                                </div>
 	                                <div class="subcontent">
 	                                    <div class="buttom">
 	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/profile">Chỉnh sửa thông tin</a></div>
 	                                    </div>
 	                                    <div class="buttom">
-	                                        <div><a class="btn_login" href="">Đăng xuất</a></div>
+	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/login">Đăng xuất</a></div>
 	                                    </div>
 	                                </div>
 	                            </li>
 	                        </ul>
 	                    </div>
                     </c:if>
-                    <c:if test="customer == null">
+                    <c:if test="${customer == null }">
 	                    <div class="shoptool">
 	                        <ul class="right_topbar">
 	                            <li>
