@@ -20,7 +20,7 @@
     <style><%@include file="./style.css"%></style>
 </head>
 <body>
-
+<%@include file="../header_footer/header.jsp"%>
     <div id="header">
         <div id="mainmenu">
             <div id="container">
@@ -167,6 +167,6 @@
                     <a href="javascript:" onclick="addCart();">Mua ngay</a>
                 </div>
             </div>
-            
+            <%@include file="../header_footer/footer.jsp"%>
 </body>
 </html>
