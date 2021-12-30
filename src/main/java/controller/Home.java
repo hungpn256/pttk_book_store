@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.BookImp;
 import model.BookItem;
 import model.Category;
+import model.Customer;
 
 /**
  * Servlet implementation class Customer
@@ -33,10 +35,15 @@ public class Home extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Customer customer = (Customer)session.getAttribute("customer");
+		if(customer!=null) {
+			System.out.println(customer.getId());
+		}
 		BookImp bi = new BookImp();
 		List<Category> categories = bi.getAllCategory();
 		request.setAttribute("categories", categories);
-		
+		request.setAttribute("customer", customer);
 		List<BookItem> bis = bi.getNewBook();
 		request.setAttribute("bis", bis);
 		

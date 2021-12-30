@@ -55,6 +55,9 @@ public class Register extends HttpServlet {
 		String firstname = request.getParameter("firstname");
 		FullName f = new FullName(firstname,lastname);
 		
+		String gender = request.getParameter("gender");
+		String phone = request.getParameter("phone");
+		
 		String city = request.getParameter("city");
 		String district = request.getParameter("district");
 		String ward = request.getParameter("ward");
