@@ -4,7 +4,6 @@
 <html>
 <head>
     <title>Đăng nhập</title>
-    <style><%@include file="./style.css"%></style>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 </head>
 <body>
@@ -30,42 +29,41 @@
                         </form>
                         <div class="autocomplete" id="autocomplete"></div>
                     </div>
-                    <div class="shoptool">
-                        <ul class="right_topbar">
-                            <li>
-                                <div class="textlable" title="Tài khoản của bạn">
-                                    Tên tài khoản<i class="fa fa-sort-desc"></i>
-                                </div>
-                                <div class="subcontent">
-                                    <div class="buttom">
-                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/profile">Chỉnh sửa thông tin</a></div>
-                                    </div>
-                                    <div class="buttom">
-                                        <div><a class="btn_login" href="">Đăng xuất</a></div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="shoptool">
-                        <ul class="right_topbar">
-                            <li>
-                                <div class="textlable" title="Đăng nhập">
-                                    <a class="btn_login" href="<%= request.getContextPath() %>/login">Đăng nhập</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="shoptool">
-                        <ul class="right_topbar">
-                            <li>
+                    <c:if test="${customer != null }">
+	                    <div class="shoptool">
+	                        <ul class="right_topbar">
+	                            <li>
+	                                <div class="textlable" title="Tài khoản của bạn">
+	                                    <c:out value="${customer.fullName.firstName }"></c:out>
+	                                </div>
+	                                <div class="subcontent">
+	                                    <div class="buttom">
+	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/profile">Chỉnh sửa thông tin</a></div>
+	                                    </div>
+	                                    <div class="buttom">
+	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/login">Đăng xuất</a></div>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                        </ul>
+	                    </div>
+                    </c:if>
+                    <c:if test="${customer == null }">
+	                    <div class="shoptool">
+	                        <ul class="right_topbar">
+	                            <li>
+	                                <div class="textlable" title="Đăng nhập">
+	                                    <a class="btn_login" href="<%= request.getContextPath() %>/login">Đăng nhập</a>
+	                                </div>
+	                            </li>
+	                             <li>
                                 <div class="textlable" title="Đăng ký">
                                     <a class="btn_login" href="<%= request.getContextPath() %>/register">Đăng ký</a>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                    
+	                        </ul>
+	                    </div>
+                    </c:if>
                 </div>
                 <div class="clear"></div>
             </div>
