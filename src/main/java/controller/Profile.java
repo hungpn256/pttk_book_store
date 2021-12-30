@@ -8,6 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.CustomerImp;
+import model.Account;
+import model.Address;
+import model.Customer;
+import model.FullName;
 
 /**
  * Servlet implementation class Register
@@ -29,6 +36,9 @@ public class Profile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Customer customer = (Customer)session.getAttribute("customer");
+		request.setAttribute("customer", customer);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/profile/index.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -38,8 +48,47 @@ public class Profile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		HttpSession session = request.getSession();
+		Customer customer = (Customer)session.getAttribute("customer");
+		
+		String passwordOld = request.getParameter("passwordOld");
+		String password = request.getParameter("password");
+		String repassword = request.getParameter("repassword");
+		
+		String lastname = request.getParameter("lastname");
+		String firstname = request.getParameter("firstname");
+		String gender = request.getParameter("gender");
+		String phone = request.getParameter("phone");
+		
+		String city = request.getParameter("city");
+		String district = request.getParameter("district");
+		String ward = request.getParameter("ward");
+		String detail = request.getParameter("detail");
+		
 
+		if(passwordOld.length() > 0 ) {
+			if(passwordOld.equals(customer.getAccount().getPassword()) &&  password.length() > 0 ) {
+				customer.getAccount().setPassword(password);
+			}
+		}
+		customer.getFullName().setFirstName(firstname);
+		customer.getFullName().setLastName(lastname);
+		customer.getAddress().setCity(city);
+		customer.getAddress().setDistrict(district);
+		customer.getAddress().setWard(ward);
+		customer.getAddress().setDetail(detail);
+		customer.setGender(gender);
+		customer.setPhone(phone);
+		CustomerImp ci = new CustomerImp();
+		
+		try {
+			ci.editCustomer(customer);
+			response.sendRedirect(request.getContextPath()+"/profile");
+		}
+		catch (Exception e) {
+			response.sendError(401,"Username password không hợp lệ");
+		}
+	
+	}
 }
 

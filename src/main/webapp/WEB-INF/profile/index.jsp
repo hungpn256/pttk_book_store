@@ -28,10 +28,16 @@
         	<h3>Chỉnh sửa thông tin cá nhân</h3>
         </div>
 		<div class="registerform">
-			<form method="post" name="rgt" id="rgt" action="/users/register/index.html" onSubmit="return ValidateForm(CheckForm);">
+			<form method="post" name="rgt" id="rgt" action="<%= request.getContextPath() %>/profile" onSubmit="return ValidateForm(CheckForm);">
                 <div class="field">
                     <div class="textlabel">
-                        <label for="idpassword">Mật khẩu</label> <span class="Required">*</span>:
+                        <label for="idpassword">Mật khẩu cũ</label> <span class="Required">*</span>:
+                    </div>
+                        <input autocomplete="off" onfocus="showhelp(2)" onblur="fonblur(2)" id="idpassword" type="password" name="passwordOld"/>
+                 </div>
+                <div class="field">
+                    <div class="textlabel">
+                        <label for="idpassword">Mật khẩu mới</label> <span class="Required">*</span>:
                     </div>
                         <input autocomplete="off" onfocus="showhelp(2)" onblur="fonblur(2)" id="idpassword" type="password" name="password"/>
                  </div>
@@ -46,56 +52,56 @@
                     <div class="textlabel">
                         <label for="fullname">Họ</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(4)" onblur="fonblur(4)" autocomplete="off" id="fullname" type="text" name="fullname"/>
+                        <input onfocus="showhelp(4)" onblur="fonblur(4)" autocomplete="off" id="fullname" type="text" name="lastname" value='<c:out value="${customer.fullName.lastName }"></c:out>'/>
                         <span class="help" id="help4"></span>
 				 </div>
 				 <div class="field">
                     <div class="textlabel">
                         <label for="fullname">Tên</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(4)" onblur="fonblur(4)" autocomplete="off" id="fullname" type="text" name="fullname"/>
+                        <input onfocus="showhelp(4)" onblur="fonblur(4)" autocomplete="off" id="fullname" type="text" name="firstname" value='<c:out value="${customer.fullName.firstName }"></c:out>'/>
                         <span class="help" id="help4"></span>
 				 </div>
                  <div class="field">
                     <div class="textlabel">
                         <label for="gender">Giới tính</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(5)" onblur="fonblur(5)" autocomplete="off" id="gender" type="text" name="gender"/>
+                        <input onfocus="showhelp(5)" onblur="fonblur(5)" autocomplete="off" id="gender" type="text" name="gender" value='<c:out value="${customer.gender }"></c:out>'/>
                         <span class="help" id="help5"></span>
                  </div>
                  <div class="field">
                     <div class="textlabel">
                         <label for="telephone">Điện thoại</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(6)" onblur="fonblur(6)" autocomplete="off" id="telephone" type="text" name="telephone" value=""/>
+                        <input onfocus="showhelp(6)" onblur="fonblur(6)" autocomplete="off" id="telephone" type="text" name="telephone" value='<c:out value="${customer.phone }"></c:out>'/>
                         <span class="help" id="help6"></span>
                  </div>
                  <div class="field">
                     <div class="textlabel">
                         <label for="city">Thành phố</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(7)" onblur="fonblur(7)" autocomplete="off" id="city" type="text" name="city"/>
+                        <input onfocus="showhelp(7)" onblur="fonblur(7)" autocomplete="off" id="city" type="text" name="city" value='<c:out value="${customer.address.city }"></c:out>'/>
                         <span class="help" id="help7"></span>
                  </div>
                  <div class="field">
                     <div class="textlabel">
                         <label for="district">Quận huyện</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(8)" onblur="fonblur(8)" autocomplete="off" id="district" type="text" name="district"/>
+                        <input onfocus="showhelp(8)" onblur="fonblur(8)" autocomplete="off" id="district" type="text" name="district" value='<c:out value="${customer.address.district }"></c:out>'/>
                         <span class="help" id="help8"></span>
                  </div>
                  <div class="field">
                     <div class="textlabel">
                         <label for="ward">Khu vực</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(9)" onblur="fonblur(9)" autocomplete="off" id="ward" type="text" name="ward"/>
+                        <input onfocus="showhelp(9)" onblur="fonblur(9)" autocomplete="off" id="ward" type="text" name="ward" value='<c:out value="${customer.address.ward }"></c:out>'/>
                         <span class="help" id="help9"></span>
                  </div>
                  <div class="field">
                     <div class="textlabel">
-                        <label for="ward">Chi tiết</label> <span class="Required">*</span>:
+                        <label for="detail">Chi tiết</label> <span class="Required">*</span>:
                     </div>
-                        <input onfocus="showhelp(9)" onblur="fonblur(9)" autocomplete="off" id="ward" type="text" name="ward"/>
+                        <input onfocus="showhelp(9)" onblur="fonblur(9)" autocomplete="off" id="detail" type="text" name="detail" value='<c:out value="${customer.address.detail }"></c:out>'/>
                         <span class="help" id="help9"></span>
                  </div>
                  <div class="clear">&nbsp;</div>
