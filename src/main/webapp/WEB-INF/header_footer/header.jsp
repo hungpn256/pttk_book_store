@@ -12,17 +12,16 @@
             <div id="container">
                 <div class="rightheader">
                     <div class="search">
-                        <form action="/products/search/index.html" onsubmit="return checksearch();" method="get">
+                        <form action="<%=request.getContextPath() %>/filter-book" onsubmit="return checksearch();" method="get">
                             <table width="100%" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td class="input" width="100%">
-                                        <input type="text" value="" name="keyword" id="keyword" size="10"
+                                        <input type="text" value="" name="q" id="keyword" size="10"
                                             class="inputfield" title="Tìm" autocomplete="off" onfocus="clearText(this)"
                                             onblur="clearText(this)" />
                                     </td>
                                     <td class="search-submit" nowrap="nowrap" width="40">
                                         <input type="submit" value="Tìm" alt="Tìm">
-                                        <input type="hidden" name="productid" id="productid" value="0" />
                                     </td>
                                 </tr>
                             </table>

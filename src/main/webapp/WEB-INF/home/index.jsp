@@ -169,7 +169,7 @@
                                                         src="<c:out value="${ category.image}"/>" alt="" title="" /></a>
                                             </div>
                                             <div class="catname">
-                                                <a href="/danh-muc/1/sach-kinh-te.html" title=""><c:out value="${ category.name}"></c:out></a>
+                                                <a href="<%= request.getContextPath() %>/filter-book?id=<c:out value="${category.id }" />" title=""><c:out value="${ category.name}"></c:out></a>
                                             </div>
                                         </div>
                                     </div>
