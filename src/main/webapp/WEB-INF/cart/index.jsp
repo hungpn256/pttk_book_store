@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Quản lý cua hang</title>
-
+	<style><%@include file="./style.css"%></style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
@@ -19,18 +20,19 @@
 </head>
 
 <body>
+<%@include file="../header_footer/header.jsp"%>
   <section id="">
     <div class="container">
-      <h3 class="mb-5">Gio hang </h3>
+      <h3 class="mb-5">Giỏ hàng </h3>
       <div class="">
         <table class="table table-striped shadow">
           <thead>
             <tr class="">
-              <td class=" text-center">Sach</td>
-              <td class=" text-center">Mo ta</td>
-              <td class=" text-center">Gia</td>
-              <td class=" text-center">So luong</td>
-              <td class=" text-center">Thanh tien</td>
+              <td class=" text-center">Sách</td>
+              <td class=" text-center">Mô tả</td>
+              <td class=" text-center">Giá</td>
+              <td class=" text-center">Số lượng</td>
+              <td class=" text-center">Thành tiền</td>
               <td></td>
             </tr>
           </thead>
@@ -101,7 +103,7 @@
     <div class="row ">
       <div class="col-8"></div>
       <div class="col-2 ">
-        <h5> Tong tien</h5>
+        <h5> Tổng tiền</h5>
       </div>
       <div class="col-2 ">
         <h5> 100</h5>
@@ -110,7 +112,7 @@
 
     <div class="row">
       <div class="col d-flex justify-content-center">
-        <button class=" btn btn-success ">Dat Hang</button>
+        <button class=" btn btn-success ">Đặt Hàng</button>
       </div>
     </div>
   </div>
@@ -121,6 +123,7 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+      <%@include file="../header_footer/footer.jsp"%>
 </body>
 
 </html>
