@@ -12,7 +12,7 @@ public class Customer extends User {
 	List<Cart> carts;
 	
 	@OneToMany(mappedBy = "customer")
-	List<Order> orders;
+	List<Ordered> orders;
 	
 	@Column(name = "memberShip")
 	private String memberShip;
@@ -32,11 +32,11 @@ public class Customer extends User {
 		this.carts = carts;
 	}
 	
-	public List<Order> getOrders() {
+	public List<Ordered> getOrders() {
 		return orders;
 	}
 	
-	public void setOrders(List<Order> orders) {
+	public void setOrders(List<Ordered> orders) {
 		this.orders = orders;
 	}
 	
