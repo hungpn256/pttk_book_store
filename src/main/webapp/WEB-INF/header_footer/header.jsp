@@ -32,9 +32,16 @@
 	                    <div class="shoptool">
 	                        <ul class="right_topbar">
 	                            <li>
+	                         
+	                            	<div class="textlable" title="Giỏ hàng">
+	                                    <a class="btn_login" href="<%= request.getContextPath() %>/cart">Giỏ hàng</a>
+	                                </div>
+	                                </li>
+	                             <li>
 	                                <div class="textlable" title="Tài khoản của bạn">
 	                                    <c:out value="${customer.fullName.firstName }"></c:out>
 	                                </div>
+	                                
 	                                <div class="subcontent">
 	                                    <div class="buttom">
 	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/profile">Chỉnh sửa thông tin</a></div>
