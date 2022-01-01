@@ -16,16 +16,16 @@ import model.Account;
 import model.Customer;
 
 /**
- * Servlet implementation class Cart
+ * Servlet implementation class ProductManagerment
  */
-@WebServlet("/cart")
-public class Cart extends HttpServlet {
+@WebServlet("/productManagerment")
+public class ProductManagerment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()ssdassadsad
      */
-    public Cart() {
+    public ProductManagerment() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +37,7 @@ public class Cart extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.removeAttribute("customer");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cart/index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/productManagerment/index.jsp");
 		dispatcher.forward(request, response);
 	}
 

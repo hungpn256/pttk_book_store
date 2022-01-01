@@ -28,8 +28,8 @@ public class Order {
     @JoinColumn(name = "ShipmentID")
 	Shipment shipment;
 	
-	@OneToOne(mappedBy = "order")
-	Cart cart;
+//	@OneToOne(mappedBy = "order")
+//	Cart cart;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,13 +79,13 @@ public class Order {
 		this.shipment = shipment;
 	}
 
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
+//	public Cart getCart() {
+//		return cart;
+//	}
+//
+//	public void setCart(Cart cart) {
+//		this.cart = cart;
+//	}
 
 	public int getId() {
 		return id;

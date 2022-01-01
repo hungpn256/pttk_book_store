@@ -75,7 +75,7 @@
                                 	<div class="vrootprice" id="rootprice"></span></div>
                             	</div>
                             <div class="goshop">
-                                <a href="javascript:" onclick="addCart();">Mua ngay</a>
+                                <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" onclick="addCart();">Mua ngay</a>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -121,7 +121,6 @@
                 <a name="fieldlist"></a>
                 <h3>Thông tin chi tiết</h3>
                 <table class="fields" cellpadding="0" cellspacing="0" width="100%">
-                	
                     <tr class="field_view_contenner row0">
                         <td class="title">
                             <a href="/products/groupfield/1/tac-gia.html" title="Tác giả"><c:out value="${bookItem.book.title }" /></a>
@@ -164,7 +163,7 @@
                     </tr>
                 </table>
                 <div class="goshop cfields">
-                    <a href="javascript:" onclick="addCart();">Mua ngay</a>
+                    <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" onclick="addCart();">Mua ngay</a>
                 </div>
             </div>
             <%@include file="../header_footer/footer.jsp"%>
