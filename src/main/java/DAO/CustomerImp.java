@@ -5,6 +5,7 @@ import org.hibernate.Transaction;
 
 import model.Account;
 import model.Customer;
+import model.Staff;
 
 public class CustomerImp extends DAO implements CustomerDAO {
 	@Override
@@ -47,5 +48,30 @@ public class CustomerImp extends DAO implements CustomerDAO {
 		session.update(c.getFullName());
 		trans.commit();
 		
+	}
+
+	@Override
+	public Staff staffLogin(Account a) {
+		Staff result = null;
+		Query query = session.createQuery("from Staff s where s.account.username = '"+a.getUsername()+"' and s.account.password = '"+a.getPassword()+"'");
+		result = (Staff)query.getSingleResult();
+		return result;
+	}
+
+	@Override
+	public void createStaff(Staff s) {
+		Transaction trans = session.getTransaction();
+        if (!trans.isActive()) {
+            trans.begin();
+        }
+        
+        session.save(s);
+        s.getAddress().setUser(s);
+        s.getAccount().setUser(s);
+        s.getFullName().setUser(s);
+		session.save(s.getAddress());
+		session.save(s.getAccount());
+		session.save(s.getFullName());
+		trans.commit();
 	}
 }

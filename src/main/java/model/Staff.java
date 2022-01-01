@@ -1,7 +1,10 @@
 package model;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.Table;
+@Entity
+@Table(name = "staff")
 public class Staff extends User {
 	@JoinColumn(name = "position")
 	private String position;

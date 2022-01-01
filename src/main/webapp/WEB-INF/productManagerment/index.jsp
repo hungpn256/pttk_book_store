@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +14,14 @@
 
     <title>Quan ly san pham</title>
 	<style><%@include file="./style.css"%></style>
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+   <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -297,87 +303,110 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="">
+                        <form method="post">
                             <div class="row">
                                 <div class="col-6">
+                                	<input type="hidden" class="form-control" aria-describedby="basic-addon1"
+                                            name="add" value="">
                                     <label for="basic-url">Tên sách</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="maSV" value="">
+                                            name="title" value="">
                                     </div>
                                     <label for="basic-url">Mô tả</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="name" value="">
+                                            name="description" value="">
                                     </div>
                                     <label for="basic-url">Số trang</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="gender" value="">
+                                            name="numberOfPage" value="">
                                     </div>
                                     <label for="basic-url">Giá nhập</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="email" value="">
+                                            name="priceImport" value="">
                                     </div>
                                     <label for="basic-url">Giá bán</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="email" value="">
+                                            name="priceCurrent" value="">
                                     </div>
                                     <label for="basic-url">Ảnh</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="phone" value="">
+                                            name="image" value="">
+                                    </div>
+                                    <label for="basic-url">Giảm giá</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        </div>
+                                        <input type="text" class="form-control" aria-describedby="basic-addon1"
+                                            name="discount" value="">
                                     </div>
                                   
                                 </div>
                                 <div class="col-1"></div>
                                 <div class="col-5">
                                     <label for="basic-url">Tác giả</label>
+                                    <select class="browser-default custom-select" name="select_author">
+									  <option selected value="new">Thêm mới</option>
+									  <c:forEach var="author" items="${authores }">
+									  	<option value="<c:out value="${ author.id}"/>" ><c:out value="${author.name }"/></option>
+									  </c:forEach>
+									</select>
+									<label for="basic-url">Tên</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="maSV" value="">
+                                            name="author_name" value="">
                                     </div>
                                     <label for="basic-url">Tiểu sử</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="name" value="">
+                                            name="bio" value="">
                                     </div>
                                     <hr>
                                     <label for="basic-url">Nhà xuất bản</label>
+                                    <select class="browser-default custom-select" name="select_publisher">
+									  <option selected value="new">Thêm mới</option>
+									   <c:forEach var="publisher" items="${publisheres }">
+									  	<option value="<c:out value="${ publisher.id}"/>" ><c:out value="${publisher.name }"/></option>
+									  </c:forEach>
+									</select>
+									<label for="basic-url">Tên</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="gender" value="">
+                                            name="publisher_name" value="">
                                     </div>
                                     <label for="basic-url">Địa chỉ</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                         </div>
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
-                                            name="email" value="">
+                                            name="address" value="">
                                     </div> 
                                 </div>
                             </div>
-                            <button class="d-flex ml-auto btn btn-primary">Lưu</button>
+                            <button class="d-flex ml-auto btn btn-primary" type="submit" name="add_book">Lưu</button>
                         </form>
                     </div>
                 </div>
@@ -417,39 +446,14 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function deleteS(id) {
-            option = confirm('Bạn có muốn xoá cuốn sách này không')
-            if (!option) {
-                return;
-            }
-            console.log(id)
-            $.post('', {
-                'id': id
-            }, function (data) {
-                alert(data)
-                location.reload()
-            })
-        }
-
-        function edit(id) {
-            $.ajax({
-                url: 'editS.html',
-                data: {
-                    'id': id
-                },
-                type: 'POST',
-                success: function (result) {
-                    $('#modal-content').html(result)
-                }
-            })
-        }
-
-    </script>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
+    <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
 </body>
 

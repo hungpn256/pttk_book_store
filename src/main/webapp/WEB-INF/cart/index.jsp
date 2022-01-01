@@ -41,7 +41,8 @@
             	<c:forEach var="cartItem" items="${cart.cartItems}">
             	<tr>
                     <td class="text-center">
-                			<a href=""><img
+                			<a href="">
+                			<img
                     			src="<c:out value="${ cartItem.bookItem.image}"/>"
                    				alt="" height="90px" width="90px">
                 			</a>
