@@ -1,6 +1,7 @@
 package model;
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +18,9 @@ public class Cart {
 	@JoinColumn(name = "UserID")
 	Customer customer;
 	
-	@OneToOne
-	@JoinColumn(name = "OrderID")
-	Order order;
+//	@OneToOne
+//	@JoinColumn(name = "OrderID")
+//	Order order;
 	
 	@OneToMany(mappedBy = "cart")
 	List<CartItem> cartItems;
@@ -29,7 +30,7 @@ public class Cart {
     @Column(name = "ID")
 	private int id;
 	
-	@Column(name = "status")
+	@Column(name = "Status")
 	private String status;
 	
 	public Cart() {
@@ -47,14 +48,14 @@ public class Cart {
 	}
 
 
-	public Order getOrder() {
-		return order;
-	}
-
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+//	public Order getOrder() {
+//		return order;
+//	}
+//
+//
+//	public void setOrder(Order order) {
+//		this.order = order;
+//	}
 
 
 	public List<CartItem> getCartItems() {

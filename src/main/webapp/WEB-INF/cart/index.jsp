@@ -28,8 +28,8 @@
         <table class="table table-striped shadow">
           <thead>
             <tr class="">
-              <td class=" text-center">Sách</td>
-              <td class=" text-center">Mô tả</td>
+              <td class=" text-center">Sản phẩm</td>
+              <td class=" text-center">Tên sách</td>
               <td class=" text-center">Giá</td>
               <td class=" text-center">Số lượng</td>
               <td class=" text-center">Thành tiền</td>
@@ -37,62 +37,37 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="text-center">
-                <a href=""><img
-                    src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
-                    alt="" height="90px" width="90px"></a>
-              </td>
-              <td class="">
-                <h4><a href="">Colorblock Scuba</a></h4>
-                <p>Web ID: 1089772</p>
-              </td>
-              <td class=" text-center">
-                <p>$59</p>
-              </td>
-              <td class="text-center">
-                <div class="">
-                  <a class="" onclick=""> <i class="fa fa-minus" aria-hidden="true"></i> </a>
-                  <input class="text-center" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                  <a class="" onclick=""> <i class="fa fa-plus" aria-hidden="true"></i> </a>
-                </div>
-              </td>
-              <td class="">
-                <p class="text-center">$59</p>
-              </td>
-              <td class="">
-                <a class="text-center" onclick=""><i class="fa fa-times"></i></a>
-              </td>
-            </tr>
-            <!-- item 2-->
-            <tr>
-              <td class="text-center">
-                <a href=""><img
-                    src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
-                    alt="" height="90px" width="90px"></a>
-              </td>
-              <td class="">
-                <h4><a href="">Colorblock Scuba</a></h4>
-                <p>Web ID: 1089772</p>
-              </td>
-              <td class=" text-center">
-                <p>$59</p>
-              </td>
-              <td class="text-center">
-                <div class="">
-                  <a class="" onclick=""> <i class="fa fa-minus" aria-hidden="true"></i> </a>
-                  <input class="text-center" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                  <a class="" onclick=""> <i class="fa fa-plus" aria-hidden="true"></i> </a>
-                </div>
-              </td>
-              <td class="">
-                <p class="text-center">$59</p>
-              </td>
-              <td class="">
-                <a class="text-center" onclick=""><i class="fa fa-times"></i></a>
-              </td>
-            </tr>
-
+            
+            	<c:forEach var="cartItem" items="${cart.cartItems}">
+            	<tr>
+                    <td class="text-center">
+                			<a href=""><img
+                    			src="<c:out value="${ cartItem.bookItem.image}"/>"
+                   				alt="" height="90px" width="90px">
+                			</a>
+              		</td>
+              		<td class="">
+                		<h5><a href=""><c:out value="${ cartItem.bookItem.book.title}"/></a></h5>
+              		</td>
+              		<td class=" text-center">
+                		<p><c:out value="${ cartItem.bookItem.priceCurrent}"/></p>
+              		</td>
+              		<td class="text-center">
+                		<div class="">
+                  			<a href = "<%=request.getContextPath()%>/cart?decrease=<c:out value="${cartItem.id}" />" class="" onclick=""> <i class="fa fa-minus" aria-hidden="true"></i> </a>
+                  			<input class="text-center" type="text" name="quantity" value="<c:out value="${ cartItem.quantity}"/>" autocomplete="off" size="2">
+                  			<a href = "<%=request.getContextPath()%>/cart?bookId=<c:out value="${cartItem.bookItem.id}" />" class="" onclick=""> <i class="fa fa-plus" aria-hidden="true"></i> </a>
+                		</div>
+              		</td>
+              		<td class="">
+                		<p class="text-center"><c:out value="${Math.round(cartItem.quantity * cartItem.bookItem.priceCurrent) }" />đ</p>
+              		</td>
+              		<td class="">
+                		<a class="text-center" onclick=""><i class="fa fa-times"></i></a>
+              		</td>
+              		</tr>
+                </c:forEach>
+            
           </tbody>
         </table>
       </div>
