@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,10 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.BookImp;
 import DAO.CustomerDAO;
 import DAO.CustomerImp;
 import model.Account;
+import model.Author;
+import model.Category;
 import model.Customer;
+import model.Publisher;
+import model.Staff;
 
 /**
  * Servlet implementation class ProductManagerment
@@ -36,7 +42,14 @@ public class ProductManagerment extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		session.removeAttribute("customer");
+		Staff staff = (Staff)session.getAttribute("staff");
+		request.setAttribute("staff", staff);
+		BookImp bi = new BookImp();
+		List<Author> authores = bi.getAllAuthor();
+		request.setAttribute("authores", authores);
+		List<Publisher> publisheres = bi.getAllPublisher();
+		request.setAttribute("publisheres", publisheres);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/productManagerment/index.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -46,7 +59,9 @@ public class ProductManagerment extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		if(request.getParameter("add_book")!=null) {
+			
+		}
 		
 	}
 
