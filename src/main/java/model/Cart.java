@@ -18,9 +18,9 @@ public class Cart {
 	@JoinColumn(name = "UserID")
 	Customer customer;
 	
-//	@OneToOne
-//	@JoinColumn(name = "OrderID")
-//	Order order;
+	@OneToOne
+	@JoinColumn(name = "OrderID")
+	Ordered ordered;
 	
 	@OneToMany(mappedBy = "cart")
 	List<CartItem> cartItems;

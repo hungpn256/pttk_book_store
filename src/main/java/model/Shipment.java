@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "shipment")
 public class Shipment {
 	@OneToMany(mappedBy = "shipment")
-	List<Order> orders;
+	List<Ordered> orders;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +36,11 @@ public class Shipment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Order> getOrders() {
+	public List<Ordered> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<Order> orders) {
+	public void setOrders(List<Ordered> orders) {
 		this.orders = orders;
 	}
 

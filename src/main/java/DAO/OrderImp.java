@@ -9,7 +9,7 @@ import model.BookItem;
 import model.Cart;
 import model.CartItem;
 import model.Customer;
-import model.Order;
+import model.Ordered;
 import model.Payment;
 import model.Shipment;
 
@@ -54,13 +54,13 @@ public class OrderImp extends DAO implements OrderDAO {
 	}
 
 	@Override
-	public List<Order> getAllOrder(Customer c) {
+	public List<Ordered> getAllOrder(Customer c) {
 		Query query = session.createQuery("from Order o where o.customer.id = "+c.getId());
-		return (List<Order>)query.getResultList();
+		return (List<Ordered>)query.getResultList();
 	}
 
 	@Override
-	public void createOrder(Order o) {
+	public void createOrder(Ordered o) {
 		Transaction trans = session.getTransaction();
         if (!trans.isActive()) {
             trans.begin();

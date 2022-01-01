@@ -14,8 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "ordered")
+public class Ordered {
 	@ManyToOne
 	@JoinColumn(name = "UserID")
 	Customer customer;
@@ -28,8 +28,8 @@ public class Order {
     @JoinColumn(name = "ShipmentID")
 	Shipment shipment;
 	
-//	@OneToOne(mappedBy = "order")
-//	Cart cart;
+	@OneToOne(mappedBy = "ordered")
+	Cart cart;
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +51,7 @@ public class Order {
 	@Column(name = "createdAt")
 	private Timestamp createdAt;
 	
-	public Order() {
+	public Ordered() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -79,13 +79,13 @@ public class Order {
 		this.shipment = shipment;
 	}
 
-//	public Cart getCart() {
-//		return cart;
-//	}
-//
-//	public void setCart(Cart cart) {
-//		this.cart = cart;
-//	}
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public int getId() {
 		return id;

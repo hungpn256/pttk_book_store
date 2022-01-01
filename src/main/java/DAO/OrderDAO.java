@@ -1,7 +1,7 @@
 package DAO;
 
 import model.Customer;
-import model.Order;
+import model.Ordered;
 import model.Payment;
 import model.Shipment;
 
@@ -15,8 +15,8 @@ public interface OrderDAO {
 	public void createCartItem(CartItem ci);
 	public void updateCartItem(CartItem ci);
 	public void deleteCartItem(CartItem ci);
-	public List<Order> getAllOrder(Customer c);
-	public void createOrder(Order o);
+	public List<Ordered> getAllOrder(Customer c);
+	public void createOrder(Ordered o);
 	public List<Payment> getAllPayment();
 	public List<Shipment> getAllShipment();
 	public Cart getCurrentCart(Customer c);
