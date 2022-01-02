@@ -11,6 +11,7 @@ import model.Publisher;
 public interface BookDAO {
 	public void createBookItem(BookItem b);
 	public void updateBookItem(BookItem b);
+	public void deleteBookItem(BookItem b);
 	public BookItem getBookById(int id);
 	public List<Category> getAllCategory();
 	public List<BookItem> getNewBook();
@@ -20,6 +21,8 @@ public interface BookDAO {
 	public List<Author> getAllAuthor();
 	public List<Publisher> getAllPublisher();
 	public Category getCategoryById(int id);
+	public Author getAuthorById(int id);
+	public Publisher getPublisherById(int id);
 	public List<BookItem> searchByName(String s);
 	public List<BookItem> getBookByIdAuthor(int id);
 	public List<BookItem> getBookByIdPublisher(int id);

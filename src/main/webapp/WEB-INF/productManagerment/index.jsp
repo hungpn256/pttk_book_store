@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,10 +22,13 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Material Design Bootstrap -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body id="page-top">
-
+	<%
+	request.setCharacterEncoding("UTF-8");
+	%>
     <div id="wrapper">
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -223,69 +226,58 @@
                                 <tr class="">
                                     <td class=" text-center">Sach</td>
                                     <td class=" text-center">Mo ta</td>
-                                    <td class=" text-center">Tác giả</td>
-                                    <td class=" text-center">Nhà phát hành</td>
-                                    <td class=" text-center">Giá</td>
+                                    <td class=" text-center" style="width:150px">Tác giả</td>
+                                    <td class=" text-center" style="width:150px">Nhà phát hành</td>
+                                    <td class=" text-center" style="width:120px">Giá</td>
                                     <td></td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-center">
+                            <c:forEach var="bookItem" items="${bookitems }"> 
+                                <tr>                                    <td class="text-center">
                                         <a href=""><img
-                                                src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
+                                                src="<c:out value="${bookItem.image }"></c:out>"
                                                 alt="" height="90px" width="90px"></a>
                                     </td>
                                     <td class="">
-                                        <h4>Colorblock Scuba</h4>
-                                        <p>Web ID: 1089772</p>
+                                        <h4><c:out value="${bookItem.book.title }"></c:out></h4>
+                                        <p><c:out value="${bookItem.book.description }"></c:out></p>
                                     </td>
                                     <td class=" text-center">
-                                        <p>abc</p>
+                                        <p><c:out value="${bookItem.book.author.name }"></c:out></p>
                                     </td>
                                     <td class="text-center">
-                                        <p>abc</p>
+                                        <p><c:out value="${bookItem.book.publisher.name }"></c:out></p>
                                     </td>
                                     <td class="">
-                                        <p class="text-center">$59</p>
+                                        <p class="text-center"><c:out value="${bookItem.priceCurrent }"></c:out></p>
                                     </td>
                                     <td class="text-center">
+                                    <script type="text/javascript">
+										function heeelllooo(id){
+											console.log(id)
+											$.post("<%=request.getContextPath() %>/productManagerment?edit_book=",
+													{id:id},(res)=>{
+												$("#modal-content").html(res);
+											})
+										}
+									</script>
+                                        	<input name="id" type="hidden" value="<c:out value="${bookItem.id }"></c:out>">
                                         <button data-toggle="modal" data-target="#basicExampleModal2"
-                                            class="btn btn-primary btn-rounded btn-sm my-0" onclick="editS()">
+                                            class="btn btn-primary btn-rounded btn-sm my-0" name="edit_book" onclick="heeelllooo(<c:out value="${bookItem.id }"></c:out>)">
                                             Edit
                                         </button>
-                                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0"
-                                            name="remove" onclick="deleteS()">
-                                            Remove
-                                        </button>
+                                        <form method="post">
+                                        	<input name="id" type="hidden" value="<c:out value="${bookItem.id }"></c:out>">
+	                                        <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0"
+	                                            name="delete_book" >
+	                                            Remove
+	                                        </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <!-- item 2-->
-                                <tr>
-                                    <td class="text-center">
-                                        <a href=""><img
-                                                src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
-                                                alt="" height="90px" width="90px"></a>
-                                    </td>
-                                    <td class="">
-                                        <h4>Colorblock Scuba</h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class=" text-center">
-                                        <p>abc</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <p>abc</p>
-                                    </td>
-                                    <td class="">
-                                        <p class="text-center">$59</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <a class="fa-2x mr-3 " onclick=""><i class="fa fa-edit"></i></a>
-                                        <a class="fa-2x" onclick=""><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-
+                            
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -404,6 +396,12 @@
                                         <input type="text" class="form-control" aria-describedby="basic-addon1"
                                             name="address" value="">
                                     </div> 
+                                     <label for="basic-url">Danh mục</label>
+                                    <select class="browser-default custom-select" name="category_id">
+									   <c:forEach var="category" items="${categories }">
+									  	<option value="<c:out value="${ category.id}"/>" ><c:out value="${category.name }"/></option>
+									  </c:forEach>
+									</select>
                                 </div>
                             </div>
                             <button class="d-flex ml-auto btn btn-primary" type="submit" name="add_book">Lưu</button>
@@ -413,7 +411,7 @@
             </div>
         </div>
         <!-- Editable table -->
-        <div class="modal fade show" id="basicExampleModal2" tabindex="1" role="dialog"
+        <div class="modal fade" id="basicExampleModal2" tabindex="1" role="dialog"
             aria-labelledby="exampleModalLabel2" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" id="modal-content">
@@ -447,7 +445,7 @@
     </div>
 
     <!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->

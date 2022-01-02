@@ -20,10 +20,14 @@ public class BookImp extends DAO implements BookDAO {
         if (!trans.isActive()) {
             trans.begin();
         }
-        session.save(b.getBook().getAuthor());
-        session.save(b.getBook().getPublisher());
-        session.save(b.getBook());
         session.save(b);
+        if(!session.contains(b.getBook().getAuthor())) {
+        	session.save(b.getBook().getAuthor());
+        }
+        if(!session.contains(b.getBook().getPublisher())) {
+        	session.save(b.getBook().getPublisher());        	
+        }
+        session.save(b.getBook());
 		trans.commit();
 		
 	}
@@ -34,8 +38,12 @@ public class BookImp extends DAO implements BookDAO {
         if (!trans.isActive()) {
             trans.begin();
         }
-        session.update(b.getBook().getAuthor());
-        session.update(b.getBook().getPublisher());
+        if(!session.contains(b.getBook().getAuthor())) {
+        	session.save(b.getBook().getAuthor());
+        }
+        if(!session.contains(b.getBook().getPublisher())) {
+        	session.save(b.getBook().getPublisher());        	
+        }
         session.update(b.getBook());
         session.update(b);
 		trans.commit();
@@ -116,7 +124,7 @@ public class BookImp extends DAO implements BookDAO {
 	@Override
 	public List<BookItem> searchByName(String s) {
 		List<BookItem> result = null;
-		Query query = session.createQuery("from BookItem b where b.book.title like '%"+ s + "%'");
+		Query query = session.createQuery("from BookItem b where b.book.title like '%"+ s + "%' order by b.id desc");
 		result = (List<BookItem>)query.getResultList();
 		return result;
 	}
@@ -135,5 +143,33 @@ public class BookImp extends DAO implements BookDAO {
 		Query query = session.createQuery("from BookItem b where b.book.publisher.id ="+id);
 		result = (List<BookItem>)query.getResultList();
 		return result;
+	}
+
+	@Override
+	public Author getAuthorById(int id) {
+		Author result = null;
+		Query query = session.createQuery("from Author a where a.id = "+id);
+		result = (Author)query.getSingleResult();
+		return result;
+	}
+
+	@Override
+	public Publisher getPublisherById(int id) {
+		Publisher result = null;
+		Query query = session.createQuery("from Publisher p where p.id = "+id);
+		result = (Publisher)query.getSingleResult();
+		return result;
+	}
+
+	@Override
+	public void deleteBookItem(BookItem b) {
+		Transaction trans = session.getTransaction();
+        if (!trans.isActive()) {
+            trans.begin();
+        }
+        session.delete(b.getBook());
+        session.delete(b);
+		trans.commit();
+		
 	}
 }
