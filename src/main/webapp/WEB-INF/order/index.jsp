@@ -21,13 +21,12 @@
 
 <body>
 <%@include file="../header_footer/header.jsp"%>
-    <div class="container mt-3 mb-3">
-        <div class="d-flex justify-content-between align-items-center mb-5">
+    <div class="container mt-3">
+        <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex flex-row align-items-center">
                 <h4 class="text-uppercase mt-1">Thanh toán</h4>
-            </div> <a href="#" class="cancel com-color">Hủy</a>
+            </div> 
         </div>
-        <section id="">
     <div class="container">
       <div class="">
         <table class="table table-striped shadow">
@@ -58,14 +57,13 @@
               		</td>
               		<td class="text-center">
                 		<div class="">
-                  			<input class="text-center" type="text" name="quantity" value="<c:out value="${ cartItem.quantity}"/>" autocomplete="off" size="2">                 			
+                			<label name="quantity"  for="quantity"><c:out value="${ cartItem.quantity}"/></label>                			
                 		</div>
               		</td>
               		<td class="">
                 		<p class="text-center"><c:out value="${Math.round(cartItem.quantity * cartItem.bookItem.priceCurrent* ( 1 - cartItem.bookItem.discount)) }" />đ</p>
               		</td>
               		<td class="">
-                		<a class="text-center" onclick=""><i class="fa fa-times"></i></a>
               		</td>
               		</tr>
                 </c:forEach>
@@ -73,11 +71,10 @@
         </table>
       </div>
     </div>
-  </section>
 
   <div class="container mt-5">
     <div class="row ">
-      <div class="col-8"></div>
+      <div class="col-6"></div>
       <div class="col-2 ">
         <h5> Tổng tiền</h5>
       </div>
@@ -85,7 +82,9 @@
         <h5><c:out value="${ total }"/></h5>
       </div>
     </div>
+    
         <div class="row">
+        	<div class="col-2"></div>
             <div class="col-md-7">
                 <div class="">
                     <form class=" needs-validation" method="post" action="">
@@ -126,7 +125,7 @@
                                     Chọn hình thức thanh toán.
                                 </div>
                             </div>
-                            <div class="mb-3 mt-3">
+                            <div class="mb-3">
                                 <label> Ghi chú</label>
                                 <textarea class="form-control" name = "note" id="textAreaExample" rows="5"></textarea>
                             </div>

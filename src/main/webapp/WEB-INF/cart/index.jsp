@@ -21,9 +21,8 @@
 
 <body>
 <%@include file="../header_footer/header.jsp"%>
-  <section id="">
     <div class="container">
-      <h3 class="mb-5">Giỏ hàng </h3>
+      <h3 class="mt-2">Giỏ hàng </h3>
       <div class="">
         <table class="table table-striped shadow">
           <thead>
@@ -63,7 +62,7 @@
                 		<p class="text-center"><c:out value="${Math.round(cartItem.quantity * cartItem.bookItem.priceCurrent* ( 1 - cartItem.bookItem.discount)) }" />đ</p>
               		</td>
               		<td class="">
-                		<a class="text-center" onclick=""><i class="fa fa-times"></i></a>
+                		<a href = "<%=request.getContextPath()%>/cart?deleteCartItem=<c:out value="${cartItem.id}" />" class="text-center"><i class="fa fa-times"></i></a>
               		</td>
               		</tr>
                 </c:forEach>
@@ -72,7 +71,6 @@
         </table>
       </div>
     </div>
-  </section>
 
   <div class="container mt-5">
     <div class="row ">

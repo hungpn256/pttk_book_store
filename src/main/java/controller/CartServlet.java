@@ -68,6 +68,11 @@ public class CartServlet extends HttpServlet {
 					oi.updateCartItem(ciExist);
 					cart.setCartItems(oi.getAllCartItem(cart));
 				}
+			} else if(request.getParameter("deleteCartItem") != null) {
+				int id = Integer.parseInt(request.getParameter("deleteCartItem")); 
+				CartItem cartItem = oi.getCartItemById(id);
+				oi.deleteCartItem(cartItem);
+				cart.getCartItems().remove(cartItem);
 			} else {
 				if(request.getParameter("decrease") != null) {
 					int id = Integer.parseInt(request.getParameter("decrease")); 
@@ -77,7 +82,6 @@ public class CartServlet extends HttpServlet {
 						oi.updateCartItem(cartItem);
 						cart.setCartItems(oi.getAllCartItem(cart));
 					}else {
-						System.out.println("delete");
 						oi.deleteCartItem(cartItem);
 						cart.getCartItems().remove(cartItem);
 					}
