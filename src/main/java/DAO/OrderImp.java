@@ -66,6 +66,7 @@ public class OrderImp extends DAO implements OrderDAO {
             trans.begin();
         }
 		session.save(o);
+		session.update(o.getCart());
 		trans.commit();
 	}
 
@@ -129,6 +130,16 @@ public class OrderImp extends DAO implements OrderDAO {
 		List<CartItem> cis = (List<CartItem>)query.getResultList();
 		return cis;
 	}
+
+	@Override
+	public Shipment getShipmentById(int id) {
+		Query query = session.createQuery("from Shipment where id =  "+id);
+		return (Shipment)query.getSingleResult();
+	}
 	
-	
+	@Override
+	public Payment getPaymentById(int id) {
+		Query query = session.createQuery("from Payment where id =  "+id);
+		return (Payment)query.getSingleResult();
+	}
 }

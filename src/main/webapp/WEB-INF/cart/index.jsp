@@ -37,7 +37,6 @@
             </tr>
           </thead>
           <tbody>
-            
             	<c:forEach var="cartItem" items="${cart.cartItems}">
             	<tr>
                     <td class="text-center">
@@ -51,7 +50,7 @@
                 		<h5><a href=""><c:out value="${ cartItem.bookItem.book.title}"/></a></h5>
               		</td>
               		<td class=" text-center">
-                		<p><c:out value="${ cartItem.bookItem.priceCurrent}"/></p>
+                		<p><c:out value="${Math.round( cartItem.bookItem.priceCurrent * ( 1 - cartItem.bookItem.discount))}"/></p>
               		</td>
               		<td class="text-center">
                 		<div class="">
@@ -61,7 +60,7 @@
                 		</div>
               		</td>
               		<td class="">
-                		<p class="text-center"><c:out value="${Math.round(cartItem.quantity * cartItem.bookItem.priceCurrent) }" />đ</p>
+                		<p class="text-center"><c:out value="${Math.round(cartItem.quantity * cartItem.bookItem.priceCurrent* ( 1 - cartItem.bookItem.discount)) }" />đ</p>
               		</td>
               		<td class="">
                 		<a class="text-center" onclick=""><i class="fa fa-times"></i></a>
@@ -82,13 +81,12 @@
         <h5> Tổng tiền</h5>
       </div>
       <div class="col-2 ">
-        <h5> 100</h5>
+        <h5><c:out value="${ total }"/></h5>
       </div>
     </div>
-
     <div class="row">
       <div class="col d-flex justify-content-center">
-        <button class=" btn btn-success ">Đặt Hàng</button>
+        <button class=" btn btn-success "><a href="<%= request.getContextPath() %>/order">Đặt hàng</a></button>
       </div>
     </div>
   </div>
