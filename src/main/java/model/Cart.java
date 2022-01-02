@@ -48,14 +48,14 @@ public class Cart {
 	}
 
 
-//	public Order getOrder() {
-//		return order;
-//	}
-//
-//
-//	public void setOrder(Order order) {
-//		this.order = order;
-//	}
+	public Ordered getOrder() {
+		return ordered;
+	}
+
+
+	public void setOrder(Ordered ordered) {
+		this.ordered = ordered;
+	}
 
 
 	public List<CartItem> getCartItems() {

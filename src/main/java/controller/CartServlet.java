@@ -83,8 +83,12 @@ public class CartServlet extends HttpServlet {
 					}
 				}
 			}
+			double total = 0;
+			for(CartItem c: cart.getCartItems()) {
+				total += c.getBookItem().getPriceCurrent()*(1-c.getBookItem().getDiscount())*c.getQuantity();
+			}
 			request.setAttribute("cart", cart);
-			System.out.println(cart.getCartItems());
+			request.setAttribute("total", total);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cart/index.jsp");
 			dispatcher.forward(request, response);
 		}

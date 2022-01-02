@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,19 +24,76 @@
     <div class="container mt-3 mb-3">
         <div class="d-flex justify-content-between align-items-center mb-5">
             <div class="d-flex flex-row align-items-center">
-                <h4 class="text-uppercase mt-1">bookstore</h4> <span class="ml-2">Pay</span>
+                <h4 class="text-uppercase mt-1">Thanh toán</h4>
             </div> <a href="#" class="cancel com-color">Hủy</a>
         </div>
+        <section id="">
+    <div class="container">
+      <div class="">
+        <table class="table table-striped shadow">
+          <thead>
+            <tr class="">
+              <td class=" text-center">Sản phẩm</td>
+              <td class=" text-center">Tên sách</td>
+              <td class=" text-center">Giá</td>
+              <td class=" text-center">Số lượng</td>
+              <td class=" text-center">Thành tiền</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            	<c:forEach var="cartItem" items="${cart.cartItems}">
+            	<tr>
+                    <td class="text-center">
+                			<a href=""><img
+                    			src="<c:out value="${ cartItem.bookItem.image}"/>"
+                   				alt="" height="90px" width="90px">
+                			</a>
+              		</td>
+              		<td class="">
+                		<h5><a href=""><c:out value="${ cartItem.bookItem.book.title}"/></a></h5>
+              		</td>
+              		<td class=" text-center">
+                		<p><c:out value="${Math.round( cartItem.bookItem.priceCurrent * ( 1 - cartItem.bookItem.discount))}"/></p>
+              		</td>
+              		<td class="text-center">
+                		<div class="">
+                  			<input class="text-center" type="text" name="quantity" value="<c:out value="${ cartItem.quantity}"/>" autocomplete="off" size="2">                 			
+                		</div>
+              		</td>
+              		<td class="">
+                		<p class="text-center"><c:out value="${Math.round(cartItem.quantity * cartItem.bookItem.priceCurrent* ( 1 - cartItem.bookItem.discount)) }" />đ</p>
+              		</td>
+              		<td class="">
+                		<a class="text-center" onclick=""><i class="fa fa-times"></i></a>
+              		</td>
+              		</tr>
+                </c:forEach>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mt-5">
+    <div class="row ">
+      <div class="col-8"></div>
+      <div class="col-2 ">
+        <h5> Tổng tiền</h5>
+      </div>
+      <div class="col-2 ">
+        <h5><c:out value="${ total }"/></h5>
+      </div>
+    </div>
         <div class="row">
             <div class="col-md-7">
                 <div class="">
-                    <form class=" needs-validation" novalidate>
+                    <form class=" needs-validation" method="post" action="">
                         <div class="row">
                             <h4 class="mb-3">Vận chuyển</h4>
-
                             <div class="mb-3">
                                 <label for="address">Địa chỉ</label>
-                                <input type="text" class="form-control" id="address" placeholder="" required>
+                                <input type="text" class="form-control" name = "address" id="address" placeholder="Nhập địa chỉ giao hàng..." required>
                                 <div class="invalid-feedback">
                                     Xin hãy điền địa chỉ.
                                 </div>
@@ -44,11 +101,10 @@
 
                             <div class=" mb-3">
                                 <label for="shipment">Hình thức Vận chuyển</label>
-                                <select class="form-control " id="shipment" required>
-                                    <option value="">Choose...</option>
-                                    <option value="">United States</option>
-                                    <option value="">Ha noi</option>
-                                    <option value="">Ho Chi Minh</option>
+                                <select name = "shipment" class="form-control " id="shipment" required>
+                                	<c:forEach var="shipment" items="${shipments}">
+                                    	<option value="<c:out value="${shipment.id}"/>"><c:out value="${shipment.name}"/></option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Chọn hình thức vận chuyển.
@@ -61,11 +117,10 @@
                             <h4 class="mt-3 mb-3">Hình thức thanh toán</h4>
                             <div class=" mb-3">
                                 <label for="payment">Hình thức Thanh toán</label>
-                                <select class="form-control " id="payment" required>
-                                    <option value="">Choose...</option>
-                                    <option value="">United States</option>
-                                    <option value="">Ha noi</option>
-                                    <option value="">Ho Chi Minh</option>
+                                <select name = "payment" class="form-control " id="payment" required>
+                                    <c:forEach var="payment" items="${payments}">
+                                    	<option value="<c:out value="${payment.id}"/>"><c:out value="${payment.name}"/></option>
+                                    </c:forEach>
                                 </select>
                                 <div class="invalid-feedback">
                                     Chọn hình thức thanh toán.
@@ -73,47 +128,16 @@
                             </div>
                             <div class="mb-3 mt-3">
                                 <label> Ghi chú</label>
-                                <textarea class="form-control" id="textAreaExample" rows="5"></textarea>
+                                <textarea class="form-control" name = "note" id="textAreaExample" rows="5"></textarea>
                             </div>
                         </div>
                         <div class=" d-flex justify-content-center">
-                            <button class="mt-5 btn btn-success  btn-lg " type="submit">Thanh Toán</button>
+                            <button class="mt-5 btn btn-success " type="submit">Thanh Toán</button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="col-1"></div>
-            <div class="col-md-4 ">
-                <div class="p-3 jumbotron" style="background-color: rgb(236, 236, 236);">
-                    <h5 class="text-center text-danger"> HÓA ĐƠN</h5>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">contracted Price</span>
-                        <span>$186.86</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Amount Deductible</span>
-                        <span>$0.0</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Coinsurance(0%)</span>
-                        <span>+ $0.0</span>
-                    </div>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Copayment </span> <span>+
-                            40.00</span> </div>
-                    <hr>
-                    <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">Total Deductible,<br>
-                            Coinsurance and copay </span> <span>$40.00</span> </div>
-                    <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">Maximum out-of-pocket
-                            <br> on insurance policy</span> <span>$40.00</span> </div>
-                    <hr>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Insurance Responsibility
-                        </span> <span>$71.76</span> </div>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Patient Balance </span>
-                        <span>$13.24</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Total </span> <span
-                            class="text-success">$85.00</span> </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 

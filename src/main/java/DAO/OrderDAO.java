@@ -24,4 +24,6 @@ public interface OrderDAO {
 	public CartItem getCartItemById(int id);
 	public CartItem checkCartExist(int idBookItem, int idCartItem);
 	public List<CartItem> getAllCartItem(Cart c);
+	public Shipment getShipmentById(int id);
+	public Payment getPaymentById(int id);
 }
