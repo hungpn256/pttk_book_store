@@ -14,6 +14,7 @@ import DAO.CustomerDAO;
 import DAO.CustomerImp;
 import model.Account;
 import model.Customer;
+import model.Staff;
 
 /**
  * Servlet implementation class Login
@@ -51,14 +52,30 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		System.out.println(username+password);
 		CustomerImp ci = new CustomerImp();
+		boolean login = false;
 		try {
+			
 			Customer customer = ci.customerLogin(new Account(username, password));
 			System.out.println(customer.getId()+"idd");
-			
+			login = true;
 			session.setAttribute("customer", customer);
 			response.sendRedirect(request.getContextPath()+"/home");
 		}
 		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Staff staff = ci.staffLogin(new Account(username, password));
+			session.setAttribute("staff", staff);
+			login = true;
+			response.sendRedirect(request.getContextPath()+"/productManagerment");
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(!login) {
 			response.sendError(401,"Username password không hợp lệ");
 		}
 		
