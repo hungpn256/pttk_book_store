@@ -59,10 +59,23 @@ public class ProductManagerment extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String add = request.getParameter("add");
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		String numberOfPage = request.getParameter("numberOfPage");
+		String priceImport = request.getParameter("priceImport");
+		String priceCurrent = request.getParameter("priceCurrent");
+		String image = request.getParameter("image");
+		String discount = request.getParameter("discount");
+		String author_name = request.getParameter("author_name");
+		String bio = request.getParameter("bio");
+		String publisher_name = request.getParameter("publisher_name");
+		String address = request.getParameter("address");
+
 		if(request.getParameter("add_book")!=null) {
 			
 		}
-		
+
 	}
 
 }
