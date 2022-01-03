@@ -2,6 +2,7 @@ package controller.order;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -53,6 +54,7 @@ public class OrderServlet extends HttpServlet {
 		Cart cart = ci.getCurrentCart(customer);
 		List<Shipment> shipments = oi.getAllShipment();
 		float total = shipments.get(0).getPrice();
+		request.setAttribute("shipmentFee", shipments.get(0).getPrice());
 		for(CartItem c: cart.getCartItems()) {
 			total += c.getBookItem().getPriceCurrent()*(1-c.getBookItem().getDiscount())*c.getQuantity();
 		}
@@ -122,7 +124,10 @@ public class OrderServlet extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			Shipment s = oi.getShipmentById(id);
 			total += s.getPrice();
-			out.print(total);
+			ArrayList<Float> res = new ArrayList<Float>();
+			res.add(total);
+			res.add(s.getPrice());
+			out.print(res);
 		}
 		
 	}

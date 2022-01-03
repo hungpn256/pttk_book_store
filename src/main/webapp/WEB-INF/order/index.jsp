@@ -75,16 +75,6 @@
     </div>
 
   <div class="container mt-5">
-    <div class="row ">
-      <div class="col-6"></div>
-      <div class="col-2 ">
-        <h5> Tổng tiền</h5>
-      </div>
-      <div class="col-2 ">
-        <h5 id="total"><c:out value="${ total }"/>đ</h5>
-      </div>
-    </div>
-    
         <div class="row">
         	<div class="col-2"></div>
             <div class="col-md-7">
@@ -114,8 +104,11 @@
                                				$.post("<%=request.getContextPath() %>/order?changeShipment=",
                                        				{id:e.target.value},
                                        				(res)=>{
-                                       					$("#total").html(res+"đ");
-                                       					$("totalPayment").val(res)
+                                       					let resArray = JSON.parse(res);
+                                       					console.log(res,resArray)
+                                       					$("#total").html(resArray[0]+"đ");
+                                       					$("#totalPayment").val(resArray[0]);
+                                       					$("#shipmentfee").html(resArray[1]+"đ")
                                        		})
                                			})
                                		})
@@ -125,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label>Phí vận chuyển: </label>
+                                <label>Phí vận chuyển:<p id="shipmentfee"><c:out value="${Math.round(shipmentFee)}"></c:out>đ</p> </label>
                             </div>
 
                             <h4 class="mt-3 mb-3">Hình thức thanh toán</h4>
@@ -145,6 +138,15 @@
                                 <textarea class="form-control" name = "note" id="textAreaExample" rows="5"></textarea>
                             </div>
                         </div>
+                        <div class="row ">
+					      <div class="col-6"></div>
+					      <div class="col-2 ">
+					        <h5> Tổng tiền</h5>
+					      </div>
+					      <div class="col-2 ">
+					        <h5 id="total"><c:out value="${ total }"/>đ</h5>
+					      </div>
+					    </div>
                         <div class=" d-flex justify-content-center">
                             <button class="mt-5 btn btn-success " name="payment" type="submit">Thanh Toán</button>
                         </div>
