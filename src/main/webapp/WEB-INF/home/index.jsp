@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Website Mua Sách Online Được Yêu Thích Nhất</title>
+<title>Website Mua Sách Online</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="Copyright" content="Design A web.">
@@ -73,7 +73,6 @@
             <div class="block" id="module_newbook">
                 <h2>
                 	<a class="title" href="#" title="Sách mới">Sách mới<span class="b-main__category-arrow"></span></a>
-                   	<a class="more" href="#" title="Xem tất cả">Xem tất cả</a> 	
                 </h2>
                 <div class="blockcontent">
                     <div class="newproducts" style="position:relative; padding:0 20px; overflow:hidden; height:340px;">
@@ -82,10 +81,10 @@
                         		<div class="product_contener" style="width:19%">
                                 <div class="products">
                                     <div class="image"><a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
-                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
+                                           ><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
+                                                alt="#" /></a></div>
                                     <div class="productname">
-                                        <a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)">
+                                        <a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" >
                                         <c:out value="${bookItem.book.title }" />
                                         </a>
                                     </div>
@@ -103,7 +102,6 @@
                 <div class="block" id="module_cheap">
                     <h2>
                         <a class="title" href="#" title="Giá thấp">Giá thấp<span class="b-main__category-arrow"></span></a>
-                        <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
                     </h2>
                     <div class="blockcontent">
                         <div class="publishing"
@@ -113,10 +111,10 @@
                         		<div class="product_contener" style="width:19%">
                                 <div class="products">
                                     <div class="image"><a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />"
-                                            title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
-                                                alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
+                                            ><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
+                                                alt="#"  /></a></div>
                                     <div class="productname">
-                                        <a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><c:out value="${bookItem.book.title }" /></a>
+                                        <a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" ><c:out value="${bookItem.book.title }" /></a>
                                     </div>
                                     <div class="prices"><c:out value="${Math.round(bookItem.priceCurrent * (1 - bookItem.discount)) }" /> đ</div>
                                     <c:if test="${bookItem.discount > 0 }">
@@ -130,7 +128,6 @@
                     <div class="block" id="module_expensive">
                         <h2>
                             <a class="title" href="#" title="Giá cao">Giá cao<span class="b-main__category-arrow"></span></a>
-                            <a class="more" href="#" title="Xem tất cả">Xem tất cả</a>
                         </h2>
                         <div class="blockcontent">
                             <div class="bestseller"
@@ -140,10 +137,10 @@
                         				<div class="product_contener" style="width:19%">
                                 			<div class="products">
                                     			<div class="image"><a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />"
-                                            		title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
-                                                	alt="#" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)" /></a></div>
+                                            		><img style="object-fit: cover" src="<c:out value="${ bookItem.image}"/>"
+                                                	alt="#" /></a></div>
                                     		<div class="productname">
-                                        			<a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" title="Thiên Quan Tứ Phúc - Tập 4  ( kèm bookmak)"><c:out value="${bookItem.book.title }" /></a>
+                                        			<a href="<%= request.getContextPath() %>/book-detail?id=<c:out value="${bookItem.id }" />" ><c:out value="${bookItem.book.title }" /></a>
                                     		</div>
                                     		<div class="prices"><c:out value="${Math.round(bookItem.priceCurrent * (1 - bookItem.discount)) }" /> đ</div>
                                     		<c:if test="${bookItem.discount > 0 }">
@@ -158,7 +155,6 @@
                         <div class="block" id="module_topcategories">
                             <h2>
                                 <a class="title" href="<%= request.getContextPath() %>/filter-book" title="Danh mục">Danh mục<span class="b-main__category-arrow"></span></a>
-                                <a class="more" href="<%= request.getContextPath() %>/filter-book" title="Xem tất cả">Xem tất cả</a>
                             </h2>
                             <div class="blockcontent">
                                 <div style="position:relative; padding:0; overflow:hidden; margin-left:-4%">

@@ -8,8 +8,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Quản lý cua hang</title>
+    <title>Website Mua Sách Online</title>
 	<style><%@include file="./style.css"%></style>
+	<link rel="shortcut icon" href="https://nobita.vn/layouts/fontpage/images/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
@@ -29,7 +30,7 @@
                 <h4 class="text-uppercase mt-1">Thanh toán</h4>
             </div> 
         </div>
-    <div class="container">
+    <div class="container mt-4">
       <div class="">
         <table class="table table-striped shadow">
           <thead>

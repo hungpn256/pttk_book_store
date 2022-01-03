@@ -7,8 +7,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Quản lý cua hang</title>
+    <title>Website Mua Sách Online</title>
 	<style><%@include file="./style.css"%></style>
+	<link rel="shortcut icon" href="https://nobita.vn/layouts/fontpage/images/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
@@ -22,141 +23,49 @@
 <%@include file="../header_footer/header.jsp"%>
     <section id="">
         <div class="container">
-            <h3 class="mb-5">Lich su mua hang </h3>
-            <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="ex2-tab-1" data-mdb-toggle="tab" href="#ex2-tabs-1" role="tab"
-                        aria-controls="ex2-tabs-1" aria-selected="true">Don hang thanh cong</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="ex2-tab-2" data-mdb-toggle="tab" href="#ex2-tabs-2" role="tab"
-                        aria-controls="ex2-tabs-2" aria-selected="false">Don hang dang xu ly</a>
-                </li>
-
-            </ul>
+            <h3 class="mb-4 mt-3">Lịch sử mua hàng </h3>
 
             <div class="tab-content" id="ex2-content">
                 <div class="tab-pane fade show active" id="ex2-tabs-1" role="tabpanel" aria-labelledby="ex2-tab-1">
                     
-                    <div class="mt-3">
+                    <div class="">
                         <table class="table table-striped shadow">
                             <thead>
                                 <tr class="">
-                                    <td class=" text-center">Sach</td>
-                                    <td class=" text-center">Mo ta</td>
-                                    <td class=" text-center">So luong</td>
-                                    <td class=" text-center">Thanh tien</td>
+                                    <td class=" text-center">Sản phẩm</td>
+                                    <td class=" text-center">Tên sách</td>
+                                    <td class=" text-center">Địa chỉ nhận</td>
+                                    <td class=" text-center">Ghi chú</td>
+                                    <td class=" text-center">Thành tiền</td>
                                     <td></td>
                                 </tr>
                             </thead>
                             <tbody>
+                            	<c:forEach var="ordered" items="${orders}">
                                 <tr>
                                     <td class="text-center">
                                         <a href=""><img
-                                                src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
+                                                src="<c:out value="${ordered.cart.cartItems[0].bookItem.image}"/>"
                                                 alt="" height="90px" width="90px"></a>
                                     </td>
                                     <td class="">
-                                        <h4><a href="">Item tab1</a></h4>
-                                        <p>Web ID: 1089772</p>
+                                        <h4><a href=""><c:out value="${ordered.cart.cartItems[0].bookItem.book.title}"/></a></h4>
                                     </td>
-                                    <td class="text-center"> 12
-                                        
+                                    <td class="text-center"><c:out value="${ordered.shipTo}"/></td>
+                                    <td class="text-center"><c:out value="${ordered.note}"/></td>
+                                    <td class="">
+                                        <p class="text-center"><c:out value="${ordered.total}" /> đ</p>
                                     </td>
                                     <td class="">
-                                        <p class="text-center">$59</p>
-                                    </td>
-                                    <td class="">
-                                        <a class="text-center display-6" ><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                        <a class="text-center display-6" ></a>
                                     </td>
                                 </tr>
-                                <!-- item 2-->
-                                <tr>
-                                    <td class="text-center">
-                                        <a href=""><img
-                                                src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
-                                                alt="" height="90px" width="90px"></a>
-                                    </td>
-                                    <td class="">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="text-center"> 12
-                                        
-                                    </td>
-                                    <td class="">
-                                        <p class="text-center">$59</p>
-                                    </td>
-                                    <td class="">
-                                        <a class="text-center display-6" ><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">
-                    
-                    <div class="mt-3">
-                        <table class="table table-striped shadow">
-                            <thead>
-                                <tr class="">
-                                    <td class=" text-center">Sach</td>
-                                    <td class=" text-center">Mo ta</td>
-                                    <td class=" text-center">So luong</td>
-                                    <td class=" text-center">Thanh tien</td>
-                                    <td></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <a href=""><img
-                                                src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
-                                                alt="" height="90px" width="90px"></a>
-                                    </td>
-                                    <td class="">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="text-center"> 12
-                                        
-                                    </td>
-                                    <td class="">
-                                        <p class="text-center">$59</p>
-                                    </td>
-                                    <td class="">
-                                        <a class="text-center display-6" ><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-                                <!-- item 2-->
-                                <tr>
-                                    <td class="text-center">
-                                        <a href=""><img
-                                                src="https://salt.tikicdn.com/cache/280x280/ts/product/c9/7c/04/67db9bf2590d75f978e68f9dcfe0db9a.jpg"
-                                                alt="" height="90px" width="90px"></a>
-                                    </td>
-                                    <td class="">
-                                        <h4><a href="">Colorblock Scuba</a></h4>
-                                        <p>Web ID: 1089772</p>
-                                    </td>
-                                    <td class="text-center"> 12
-                                        
-                                    </td>
-                                    <td class="">
-                                        <p class="text-center">$59</p>
-                                    </td>
-                                    <td class="">
-                                        <a class="text-center display-6" ><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+                <div class="tab-pane fade" id="ex2-tabs-2" role="tabpanel" aria-labelledby="ex2-tab-2">                   
             </div>
         </div>
     </section>

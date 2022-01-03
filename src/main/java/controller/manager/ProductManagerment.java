@@ -56,11 +56,12 @@ public class ProductManagerment extends HttpServlet {
 		}
 		request.setAttribute("staff", staff);
 		BookImp bi = new BookImp();
-		List<Author> authores = bi.getAllAuthor();
-		request.setAttribute("authores", authores);
+		List<Author> authors = bi.getAllAuthor();
+		request.setAttribute("authors", authors);
 
-		List<Publisher> publisheres = bi.getAllPublisher();
-		request.setAttribute("publisheres", publisheres);
+		List<Publisher> publishers = bi.getAllPublisher();
+		System.out.println(publishers.size()+"size publisher");
+		request.setAttribute("publishers", publishers);
 
 		List<Category> categories = bi.getAllCategory();
 		request.setAttribute("categories", categories);
@@ -82,8 +83,8 @@ public class ProductManagerment extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		BookImp bi = new BookImp();
-		List<Author> authores = bi.getAllAuthor();
-		List<Publisher> publisheres = bi.getAllPublisher();
+		List<Author> authors = bi.getAllAuthor();
+		List<Publisher> publishers = bi.getAllPublisher();
 		List<Category> categories = bi.getAllCategory();
 		if (request.getParameter("add_book") != null) {
 			String add = request.getParameter("add");
@@ -159,12 +160,12 @@ public class ProductManagerment extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			BookItem bitem = bi.getBookById(id);
 			String optAuthor = "";
-			for(Author a:authores) {
+			for(Author a:authors) {
 				String selected = a.getId() == bitem.getBook().getAuthor().getId() ? "selected" : "";
 				optAuthor+="<option "+ selected +" value=\""+a.getId()+"\" >"+a.getName()+"</option>";
 			}
 			String optPublisher = "";
-			for(Publisher p:publisheres) {
+			for(Publisher p:publishers) {
 				String selected = p.getId() == bitem.getBook().getPublisher().getId() ? "selected" : "";
 				optPublisher+="<option "+ selected +" value=\""+p.getId()+"\" >"+p.getName()+"</option>";
 			}
@@ -254,7 +255,7 @@ public class ProductManagerment extends HttpServlet {
 					+ "                                        </div>"
 					+ "                                        <input type=\"text\" class=\"form-control\" aria-describedby=\"basic-addon1\""
 					+ "                                            name=\"bio\" value=\"\">"
-					+ "                                    </div>" + "                                    <hr>"
+					+ "                                    </div>"
 					+ "                                    <label for=\"basic-url\">Nhà xuất bản</label>"
 					+ "                                    <select class=\"browser-default custom-select\" name=\"select_publisher\" >"
 					+ "									  <option selected value=\"new\">Thêm mới</option>"
