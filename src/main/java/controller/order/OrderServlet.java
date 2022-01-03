@@ -1,4 +1,4 @@
-package controller;
+package controller.order;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.CustomerDAO;
-import DAO.CustomerImp;
-import DAO.OrderImp;
+import DAO.cart.CartImp;
+import DAO.order.OrderImp;
+import DAO.user.UserDAO;
+import DAO.user.UserImp;
 import model.Account;
 import model.Cart;
 import model.CartItem;
@@ -47,7 +48,8 @@ public class OrderServlet extends HttpServlet {
 		Customer customer = (Customer)session.getAttribute("customer");
 		if(customer != null) {
 		OrderImp oi = new OrderImp();
-		Cart cart = oi.getCurrentCart(customer);
+		CartImp ci = new CartImp();
+		Cart cart = ci.getCurrentCart(customer);
 		double total = 0;
 		for(CartItem c: cart.getCartItems()) {
 			total += c.getBookItem().getPriceCurrent()*(1-c.getBookItem().getDiscount())*c.getQuantity();
@@ -76,7 +78,8 @@ public class OrderServlet extends HttpServlet {
 		Customer customer = (Customer)session.getAttribute("customer");
 		Ordered order = new Ordered();
 		OrderImp oi = new OrderImp();
-		Cart cart = oi.getCurrentCart(customer);
+		CartImp ci = new CartImp();
+		Cart cart = ci.getCurrentCart(customer);
 		cart.setOrder(order);
 		order.setCart(cart);
 		if(request.getParameter("shipment") != null) { 

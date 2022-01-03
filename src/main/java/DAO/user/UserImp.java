@@ -1,13 +1,16 @@
-package DAO;
+package DAO.user;
 
 import org.hibernate.query.Query;
+
+import DAO.book.DAO;
+
 import org.hibernate.Transaction;
 
 import model.Account;
 import model.Customer;
 import model.Staff;
 
-public class CustomerImp extends DAO implements CustomerDAO {
+public class UserImp extends DAO implements UserDAO {
 	@Override
 	public void createCustomer(Customer c) {
 		Transaction trans = session.getTransaction();

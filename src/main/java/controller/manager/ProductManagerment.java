@@ -1,4 +1,4 @@
-package controller;
+package controller.manager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.BookImp;
-import DAO.CustomerDAO;
-import DAO.CustomerImp;
+import DAO.book.BookImp;
+import DAO.user.UserDAO;
+import DAO.user.UserImp;
 import model.Account;
 import model.Author;
 import model.Book;
@@ -50,6 +50,10 @@ public class ProductManagerment extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		Staff staff = (Staff) session.getAttribute("staff");
+		if(staff == null) {
+			response.sendRedirect(request.getContextPath()+"/login");
+			return;
+		}
 		request.setAttribute("staff", staff);
 		BookImp bi = new BookImp();
 		List<Author> authores = bi.getAllAuthor();
@@ -263,7 +267,7 @@ public class ProductManagerment extends HttpServlet {
 					+ "                                        <input type=\"text\" class=\"form-control\" aria-describedby=\"basic-addon1\""
 					+ "                                            name=\"publisher_name\" value=\"\">"
 					+ "                                    </div>"
-					+ "                                    <label for=\"basic-url\">Địa chỉ</label>"
+					+ "                                    <label for=\"basic-url\">�?ịa chỉ</label>"
 					+ "                                    <div class=\"input-group mb-3\">"
 					+ "                                        <div class=\"input-group-prepend\">"
 					+ "                                        </div>"

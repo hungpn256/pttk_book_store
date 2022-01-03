@@ -1,4 +1,4 @@
-package controller;
+package controller.book;
 
 import java.io.IOException;
 
@@ -8,24 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import DAO.CustomerDAO;
-import DAO.CustomerImp;
-import model.Account;
-import model.Customer;
+import DAO.book.BookImp;
+import model.BookItem;
 
 /**
- * Servlet implementation class OrderHistory
+ * Servlet implementation class BookDetail
  */
-@WebServlet("/orderHistory")
-public class OrderHistory extends HttpServlet {
+@WebServlet("/book-detail")
+public class BookDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()ssdassadsad
      */
-    public OrderHistory() {
+    public BookDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,9 +32,12 @@ public class OrderHistory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		session.removeAttribute("customer");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/orderHistory/index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/book-detail/index.jsp");
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		BookImp bi = new BookImp();
+		BookItem bookItem = bi.getBookById(id);
+		request.setAttribute("bookItem", bookItem);
 		dispatcher.forward(request, response);
 	}
 
@@ -46,8 +46,7 @@ public class OrderHistory extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
+		doGet(request, response);
 	}
 
 }

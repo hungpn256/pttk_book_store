@@ -1,4 +1,4 @@
-package DAO;
+package DAO.book;
 
 import java.io.File;
 import org.hibernate.HibernateException;

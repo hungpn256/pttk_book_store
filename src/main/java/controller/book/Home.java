@@ -1,4 +1,4 @@
-package controller;
+package controller.book;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.BookImp;
+import DAO.book.BookImp;
 import model.BookItem;
 import model.Category;
 import model.Customer;

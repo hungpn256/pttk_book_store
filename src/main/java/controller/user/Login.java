@@ -1,4 +1,4 @@
-package controller;
+package controller.user;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.CustomerDAO;
-import DAO.CustomerImp;
+import DAO.user.UserDAO;
+import DAO.user.UserImp;
 import model.Account;
 import model.Customer;
 import model.Staff;
@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		System.out.println(username+password);
-		CustomerImp ci = new CustomerImp();
+		UserImp ci = new UserImp();
 		boolean login = false;
 		try {
 			

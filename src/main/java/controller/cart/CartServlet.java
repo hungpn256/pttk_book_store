@@ -1,4 +1,4 @@
-package controller;
+package controller.cart;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.BookImp;
-import DAO.CustomerDAO;
-import DAO.CustomerImp;
-import DAO.OrderImp;
+import DAO.book.BookImp;
+import DAO.cart.CartImp;
+import DAO.order.OrderImp;
+import DAO.user.UserDAO;
+import DAO.user.UserImp;
 import model.Account;
 import model.BookItem;
 import model.Cart;
@@ -47,42 +48,42 @@ public class CartServlet extends HttpServlet {
 		int quantity = 1;
 		BookImp bi = new BookImp(); 
 		if(customer != null) {
-			OrderImp oi = new OrderImp();
-			Cart cart = oi.getCurrentCart(customer);
+			CartImp cimp = new CartImp();
+			Cart cart = cimp.getCurrentCart(customer);
 			if(request.getParameter("bookId") != null) { 
 				int id = Integer.parseInt(request.getParameter("bookId")); 
 				BookItem bookItem = bi.getBookById(id); 
 				if(request.getParameter("quantity") != null) { 
 					quantity = Integer.parseInt(request.getParameter("quantity")); 
 				}
-				CartItem ciExist = oi.checkCartExist(id, cart.getId());
+				CartItem ciExist = cimp.checkCartExist(id, cart.getId());
 				if(ciExist == null) {
 					CartItem ci = new CartItem();
 					ci.setBookItem(bookItem);
 					ci.setQuantity(quantity);
 					ci.setCart(cart);
-					oi.createCartItem(ci);
-					cart.setCartItems(oi.getAllCartItem(cart));
+					cimp.createCartItem(ci);
+					cart.setCartItems(cimp.getAllCartItem(cart));
 				}else {
 					ciExist.setQuantity(ciExist.getQuantity() + 1);
-					oi.updateCartItem(ciExist);
-					cart.setCartItems(oi.getAllCartItem(cart));
+					cimp.updateCartItem(ciExist);
+					cart.setCartItems(cimp.getAllCartItem(cart));
 				}
 			} else if(request.getParameter("deleteCartItem") != null) {
 				int id = Integer.parseInt(request.getParameter("deleteCartItem")); 
-				CartItem cartItem = oi.getCartItemById(id);
-				oi.deleteCartItem(cartItem);
+				CartItem cartItem = cimp.getCartItemById(id);
+				cimp.deleteCartItem(cartItem);
 				cart.getCartItems().remove(cartItem);
 			} else {
 				if(request.getParameter("decrease") != null) {
 					int id = Integer.parseInt(request.getParameter("decrease")); 
-					CartItem cartItem = oi.getCartItemById(id); 
+					CartItem cartItem = cimp.getCartItemById(id); 
 					if(cartItem.getQuantity() > 1) {
 						cartItem.setQuantity(cartItem.getQuantity() - 1);
-						oi.updateCartItem(cartItem);
-						cart.setCartItems(oi.getAllCartItem(cart));
+						cimp.updateCartItem(cartItem);
+						cart.setCartItems(cimp.getAllCartItem(cart));
 					}else {
-						oi.deleteCartItem(cartItem);
+						cimp.deleteCartItem(cartItem);
 						cart.getCartItems().remove(cartItem);
 					}
 				}
@@ -110,7 +111,7 @@ public class CartServlet extends HttpServlet {
 		Customer customer = (Customer)session.getAttribute("customer");
 		int quantity = 1;
 		BookImp bi = new BookImp(); 
-		OrderImp oi = new OrderImp();
+		CartImp cimp = new CartImp();
 		if(customer != null) {
 			if(request.getParameter("bookId") != null) { 
 				int id = Integer.parseInt(request.getParameter("bookId")); 
@@ -121,7 +122,7 @@ public class CartServlet extends HttpServlet {
 				CartItem ci = new CartItem();
 				ci.setBookItem(bookItem);
 				ci.setQuantity(quantity);
-				oi.createCartItem(ci);
+				cimp.createCartItem(ci);
 				response.sendRedirect("/cart");
 			}
 		}else {
