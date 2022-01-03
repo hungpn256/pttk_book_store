@@ -1,6 +1,7 @@
 package controller.order;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -50,13 +51,14 @@ public class OrderServlet extends HttpServlet {
 		OrderImp oi = new OrderImp();
 		CartImp ci = new CartImp();
 		Cart cart = ci.getCurrentCart(customer);
-		double total = 0;
+		List<Shipment> shipments = oi.getAllShipment();
+		float total = shipments.get(0).getPrice();
 		for(CartItem c: cart.getCartItems()) {
 			total += c.getBookItem().getPriceCurrent()*(1-c.getBookItem().getDiscount())*c.getQuantity();
 		}
 		request.setAttribute("total", total);
 		request.setAttribute("cart", cart);
-		List<Shipment> shipments = oi.getAllShipment();
+		
 		request.setAttribute("shipments", shipments);
 		List<Payment> payments = oi.getAllPayment();
 		request.setAttribute("payments", payments);
@@ -73,39 +75,56 @@ public class OrderServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Ô");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		Customer customer = (Customer)session.getAttribute("customer");
 		Ordered order = new Ordered();
 		OrderImp oi = new OrderImp();
 		CartImp ci = new CartImp();
 		Cart cart = ci.getCurrentCart(customer);
-		cart.setOrder(order);
-		order.setCart(cart);
-		if(request.getParameter("shipment") != null) { 
-			int idshipment = Integer.parseInt(request.getParameter("shipment")); 
-			order.setShipment(oi.getShipmentById(idshipment));
+		if(request.getParameter("payment")!=null) {
+			cart.setOrder(order);
+			order.setCart(cart);
+			if(request.getParameter("shipment") != null) { 
+				int idshipment = Integer.parseInt(request.getParameter("shipment")); 
+				order.setShipment(oi.getShipmentById(idshipment));
+			}
+			if(request.getParameter("payment") != null) { 
+				int idpayment = Integer.parseInt(request.getParameter("payment")); 
+				order.setPayment(oi.getPaymentById(idpayment));
+			} 
+			String address = request.getParameter("address"); 
+			order.setShipTo(address);
+			order.setCustomer(customer);
+			String note = request.getParameter("note");
+			order.setNote(note);
+			cart.setStatus("paid");
+			order.setStatus("pending");
+			float total = Float.parseFloat(request.getParameter("totalPayment"));
+			order.setTotal(total);
+			try {
+				oi.createOrder(order);
+				System.out.println(request.getContextPath()+"context");
+				response.sendRedirect(request.getContextPath()+"/");
+			} catch (Exception e) {
+				e.printStackTrace();
+				response.sendRedirect(request.getContextPath()+"/order");
+			}
 		}
-		if(request.getParameter("payment") != null) { 
-			int idpayment = Integer.parseInt(request.getParameter("payment")); 
-			order.setPayment(oi.getPaymentById(idpayment));
-		} 
-		String address = request.getParameter("address"); 
-		order.setShipTo(address);
-		order.setCustomer(customer);
-		String note = request.getParameter("note");
-		order.setNote(note);
-		cart.setStatus("paid");
-		order.setStatus("pending");
-		order.setTotal(100);
-		try {
-			oi.createOrder(order);
-			System.out.println(request.getContextPath()+"context");
-			response.sendRedirect(request.getContextPath()+"/");
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.sendRedirect(request.getContextPath()+"/order");
+		else if(request.getParameter("changeShipment")!=null) {
+			PrintWriter out = response.getWriter();
+			float total = 0;
+			for(CartItem c: cart.getCartItems()) {
+				total += c.getBookItem().getPriceCurrent()*(1-c.getBookItem().getDiscount())*c.getQuantity();
+			}
+			
+			int id = Integer.parseInt(request.getParameter("id"));
+			Shipment s = oi.getShipmentById(id);
+			total += s.getPrice();
+			out.print(total);
 		}
+		
 	}
 
 }

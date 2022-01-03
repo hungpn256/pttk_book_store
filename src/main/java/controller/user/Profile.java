@@ -48,6 +48,8 @@ public class Profile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		Customer customer = (Customer)session.getAttribute("customer");
 		
