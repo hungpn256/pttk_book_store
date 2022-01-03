@@ -1,6 +1,7 @@
 package controller.order;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,10 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.book.BookImp;
+import DAO.order.OrderImp;
 import DAO.user.UserDAO;
 import DAO.user.UserImp;
 import model.Account;
+import model.Author;
 import model.Customer;
+import model.Ordered;
 
 /**
  * Servlet implementation class OrderHistory
@@ -36,9 +41,16 @@ public class OrderHistory extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		session.removeAttribute("customer");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/orderHistory/index.jsp");
-		dispatcher.forward(request, response);
+		Customer customer = (Customer)session.getAttribute("customer");
+		if(customer != null) {
+			OrderImp oi = new OrderImp();
+			List<Ordered> orders = oi.getAllOrder(customer);
+			request.setAttribute("orders", orders);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/orderHistory/index.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			response.sendRedirect(request.getContextPath() + "/login");
+		}
 	}
 
 	/**

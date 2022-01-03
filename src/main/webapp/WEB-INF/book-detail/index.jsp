@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Website Mua Sách Online Được Yêu Thích Nhất</title>
+<title>Website Mua Sách Online</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
@@ -21,28 +21,6 @@
 </head>
 <body>
 <%@include file="../header_footer/header.jsp"%>
-    <div id="header">
-        <div id="mainmenu">
-            <div id="container">
-                <div class="mainmenu_contener">
-                    <div class="mainmenu">
-                        <span class="while"></span>
-                        <span>
-                            <h2>Danh mục sản phẩm</h2>
-                        </span>
-                    </div>
-                    <div class="hotline">
-                        <strong><span style="color:#000000;"><span
-                                    style="font-size:14px;">Hotline:&nbsp;</span></span></strong>
-                        <span style="color:#ff0000;"><b
-                                style="box-sizing: border-box; color: rgb(0, 204, 102); font-family: Verdana, Arial, Helvetica, sans-serif;">0938
-                                424 289</b></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="container">
         <div class="sortable" id="layoutGroup1">
             <div class="product_view_contener">
@@ -57,16 +35,6 @@
                             	</div>
                         		<div class="clear"></div>
                         	</div>
-                        	<div class="groups">
-                            	<div class="write_comment">
-                                	<a href="#comment"><i class="fa fa-pencil"></i> Gửi nhật xét của bạn</a>
-                            	</div>
-                            	<div class="add_wishlist">
-                                	<a href="/orders/addwishlist/3616/thien-quan-tu-phuc-tap-4-kem-bookmak-.html"><i
-                                        class="fa fa-star"></i> Thêm vào yêu thích</a>
-                            	</div>
-                            	<div class="clear"></div>
-                        	</div>
                         	<div class="prices_contener">
                             	<div class="prices">
                                 	<div class="saleprice">
@@ -75,18 +43,16 @@
                                 	<div class="vrootprice" id="rootprice"></span></div>
                             	</div>
                             <div class="goshop">
-                                <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" onclick="addCart();">Mua ngay</a>
+                                <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" style = "color: #fff;">Mua ngay</a>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div class="intro">
                             <div class="block " id="content_ViewProducts">
                                 <div class="blockcontent">
-                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Bọc Plastic miễn phí </span></p>
-                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Giao hàng miễn phí trong nội thành TP. HCM với đơn hàng <span
-                                                style="color:#33cc33;"><strong>≥ 150.000 đ</strong></span></span></p>
-                                    <p><i class="fa fa-check"></i><span style="font-size:14px;">Giao hàng miễn phí toàn quốc với đơn hàng <span
-                                                style="color:#33cc33;"><strong>≥ 250.000 đ</strong></span></span></p>
+                                    <p><span style="font-size:14px;">Bọc Plastic miễn phí </span></p>
+                                    <p><span style="font-size:14px;">Giao hàng miễn phí trong nội thành TP. HCM với đơn hàng</p>
+                                    <p><span style="font-size:14px;">Giao hàng miễn phí toàn quốc với đơn hàng</p>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +129,7 @@
                     </tr>
                 </table>
                 <div class="goshop cfields">
-                    <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" onclick="addCart();">Mua ngay</a>
+                    <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" style = "color: #fff;">Mua ngay</a>
                 </div>
             </div>
             <%@include file="../header_footer/footer.jsp"%>

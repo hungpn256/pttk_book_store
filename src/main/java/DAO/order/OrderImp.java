@@ -18,7 +18,7 @@ public class OrderImp extends DAO implements OrderDAO {
 	
 	@Override
 	public List<Ordered> getAllOrder(Customer c) {
-		Query query = session.createQuery("from Order o where o.customer.id = "+c.getId());
+		Query query = session.createQuery("from Ordered o where o.customer.id = "+c.getId());
 		return (List<Ordered>)query.getResultList();
 	}
 

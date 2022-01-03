@@ -30,7 +30,7 @@ public class Shipment {
 	private String address;
 
 	@Column(name = "price")
-	private String price;
+	private float price;
 
 	public Shipment() {
 		// TODO Auto-generated constructor stub
@@ -76,11 +76,11 @@ public class Shipment {
 		this.address = address;
 	}
 
-	public String getPrice() {
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 
