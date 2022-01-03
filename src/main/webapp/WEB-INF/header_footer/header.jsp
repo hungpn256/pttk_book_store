@@ -10,6 +10,11 @@
     <div id="header">
         <div class="top_header">
             <div id="container">
+	            <div class="mainlogo">
+	
+	                <div class="block banner " id="banner_mainlogo"><div class="blockcontent"><a href="<%= request.getContextPath() %>/home" title="Logo chính" target="_self"><img src="https://tse3.mm.bing.net/th?id=OIP.eyuUWTQEf-54LkFuUahQaQHaHa&pid=Api&P=0&w=300&h=300" border="0" title="Logo chính" width="80" height="44"></a></div></div>
+	
+	            </div>
                 <div class="rightheader">
                     <div class="search">
                         <form action="<%=request.getContextPath() %>/filter-book" onsubmit="return checksearch();" method="get">
@@ -34,7 +39,7 @@
 	                            <li>
 	                         
 	                            	<div class="textlable" title="Giỏ hàng">
-	                                    <a class="btn_login" href="<%= request.getContextPath() %>/cart">Giỏ hàng</a>
+	                                    <a class="btn_login" style="color:white" href="<%= request.getContextPath() %>/cart">Giỏ hàng</a>
 	                                </div>
 	                                </li>
 	                             <li>
