@@ -21,28 +21,7 @@
 </head>
 <body>
 <%@include file="../header_footer/header.jsp"%>
-    <div id="header">
-        <div id="mainmenu">
-            <div id="container">
-                <div class="mainmenu_contener">
-                    <div class="mainmenu">
-                        <span class="while"></span>
-                        <span>
-                            <h2>Danh mục sản phẩm</h2>
-                        </span>
-                    </div>
-                    <div class="hotline">
-                        <strong><span style="color:#000000;"><span
-                                    style="font-size:14px;">Hotline:&nbsp;</span></span></strong>
-                        <span style="color:#ff0000;"><b
-                                style="box-sizing: border-box; color: rgb(0, 204, 102); font-family: Verdana, Arial, Helvetica, sans-serif;">0938
-                                424 289</b></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
     <div id="container">
         <div class="sortable" id="layoutGroup1">
             <div class="product_view_contener">
@@ -75,7 +54,7 @@
                                 	<div class="vrootprice" id="rootprice"></span></div>
                             	</div>
                             <div class="goshop">
-                                <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" onclick="addCart();">Mua ngay</a>
+                                <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" style = "color: #fff;">Mua ngay</a>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -163,7 +142,7 @@
                     </tr>
                 </table>
                 <div class="goshop cfields">
-                    <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" onclick="addCart();">Mua ngay</a>
+                    <a href="<%= request.getContextPath() %>/cart?bookId=<c:out value="${bookItem.id }" />" style = "color: #fff;">Mua ngay</a>
                 </div>
             </div>
             <%@include file="../header_footer/footer.jsp"%>
