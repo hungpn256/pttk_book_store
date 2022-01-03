@@ -8,8 +8,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Website Mua Sách Online Được Yêu Thích Nhất</title>
+  <title>Website Mua Sách Online</title>
 	<style><%@include file="./style.css"%></style>
+	<link rel="shortcut icon" href="https://nobita.vn/layouts/fontpage/images/favicon.ico" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
@@ -24,7 +25,7 @@
     <div class="container">
       <h3 class="mt-2">Giỏ hàng </h3>
       <div class="">
-        <table class="table table-striped shadow">
+        <table class="table table-striped shadow mt-4">
           <thead>
             <tr class="">
               <td class=" text-center">Sản phẩm</td>

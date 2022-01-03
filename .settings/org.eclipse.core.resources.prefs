@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
-encoding//src/main/java/controller/Login.java=UTF-8
-encoding//src/main/java/controller/ProductManagerment.java=UTF-8
-encoding//src/main/java/controller/Profile.java=UTF-8
-encoding//src/main/java/controller/Register.java=UTF-8
+encoding//src/main/java/controller/manager/ProductManagerment.java=UTF-8
+encoding//src/main/java/controller/user/Login.java=UTF-8
+encoding//src/main/java/controller/user/Profile.java=UTF-8
+encoding//src/main/java/controller/user/Register.java=UTF-8
 encoding//src/main/webapp/WEB-INF/home/index.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/login/index.jsp=UTF-8

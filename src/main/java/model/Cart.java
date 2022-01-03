@@ -23,7 +23,7 @@ public class Cart {
 	Ordered ordered;
 	
 	@OneToMany(mappedBy = "cart")
-	List<CartItem> cartItems;
+	List<CartItem> cartItems = new ArrayList<>();
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

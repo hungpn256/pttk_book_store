@@ -1,6 +1,6 @@
 package test;
 
-import DAO.CustomerImp;
+import DAO.user.UserImp;
 import model.Account;
 import model.Address;
 import model.Customer;
@@ -9,7 +9,7 @@ import model.Staff;
 
 public class Test {
 	public static void main(String[] args) {
-		CustomerImp cu = new CustomerImp();
+		UserImp cu = new UserImp();
 		
 		Address a = new Address("HN", "HBT", "PH", "343 tran khat tran");
 		FullName name = new FullName("Hung","Pham");
