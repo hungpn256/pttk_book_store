@@ -52,6 +52,9 @@
 	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/profile">Chỉnh sửa thông tin</a></div>
 	                                    </div>
 	                                    <div class="buttom">
+	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/orderHistory">Lịch sử mua hàng</a></div>
+	                                    </div>
+	                                    <div class="buttom">
 	                                        <div><a class="btn_login" href="<%= request.getContextPath() %>/login">Đăng xuất</a></div>
 	                                    </div>
 	                                </div>

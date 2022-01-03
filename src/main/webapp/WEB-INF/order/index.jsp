@@ -18,6 +18,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +56,7 @@
                 		<h5><a href=""><c:out value="${ cartItem.bookItem.book.title}"/></a></h5>
               		</td>
               		<td class=" text-center">
-                		<p><c:out value="${Math.round( cartItem.bookItem.priceCurrent * ( 1 - cartItem.bookItem.discount))}"/></p>
+                		<p><c:out value="${Math.round( cartItem.bookItem.priceCurrent * ( 1 - cartItem.bookItem.discount))}"/>đ</p>
               		</td>
               		<td class="text-center">
                 		<div class="">
@@ -80,7 +82,7 @@
         <h5> Tổng tiền</h5>
       </div>
       <div class="col-2 ">
-        <h5><c:out value="${ total }"/></h5>
+        <h5 id="total"><c:out value="${ total }"/>đ</h5>
       </div>
     </div>
     
@@ -88,7 +90,7 @@
         	<div class="col-2"></div>
             <div class="col-md-7">
                 <div class="">
-                    <form class=" needs-validation" method="post" action="">
+                    <form class="needs-validation" method="post" action="">
                         <div class="row">
                             <h4 class="mb-3">Vận chuyển</h4>
                             <div class="mb-3">
@@ -106,6 +108,19 @@
                                     	<option value="<c:out value="${shipment.id}"/>"><c:out value="${shipment.name}"/></option>
                                     </c:forEach>
                                 </select>
+                                <script type="text/javascript">
+                               		$( document ).ready(function() {
+                               			$("#shipment").change ((e)=>{
+                               				console.log("abc",e.target.value)
+                               				$.post("<%=request.getContextPath() %>/order?changeShipment=",
+                                       				{id:e.target.value},
+                                       				(res)=>{
+                                       					$("#total").html(res+"đ");
+                                       					$("totalPayment").val(res)
+                                       		})
+                               			})
+                               		})
+                                </script>
                                 <div class="invalid-feedback">
                                     Chọn hình thức vận chuyển.
                                 </div>
@@ -132,19 +147,17 @@
                             </div>
                         </div>
                         <div class=" d-flex justify-content-center">
-                            <button class="mt-5 btn btn-success " type="submit">Thanh Toán</button>
+                            <button class="mt-5 btn btn-success " name="payment" type="submit">Thanh Toán</button>
                         </div>
+                        <input type="hidden" id="totalPayment" name="totalPayment" value="<c:out value="${total }" />">
                     </form>
                 </div>
             </div>
             <div class="col-1"></div>
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
 <%@include file="../header_footer/footer.jsp"%>
 </body>
