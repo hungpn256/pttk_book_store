@@ -14,7 +14,7 @@
                     <div class="blockcontent">
                         <ul>
                             <li class="group">Hỗ trợ khách hàng<ul>
-                                    <li class="group">Email: thuyduong@gmail.com<ul>
+                                    <li class="group">Email: bookstore@gmail.com<ul>
                                             <li class="group">Hotline: <b>0938 424 289</b></li>
                                         </ul>
                                     </li>
@@ -55,7 +55,6 @@
             </div>
             <div class="clear"></div>
         </div>
-        <div id='bttop' class="bttop"><i class="fa fa-arrow-up"></i></div>
     </div>
 </body>
 </html>
