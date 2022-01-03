@@ -59,9 +59,7 @@
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                 data-parent="#accordionSidebar">
                                 <div class="bg-white py-2 collapse-inner rounded">
-                                    <h6 class="collapse-header">Danh muc sach</h6>
-                                    <a class="collapse-item" href="">Buttons</a>
-                                    <a class="collapse-item" href="">Cards</a>
+                                    <h6 class="collapse-header">Sách</h6>
                                 </div>
                             </div>
                         </li>
@@ -74,44 +72,40 @@
                                 </form>
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item dropdown no-arrow d-sm-none">
-                                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-search fa-fw"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                            aria-labelledby="searchDropdown">
-                                            <form class="form-inline mr-auto w-100 navbar-search">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control bg-light border-0 small"
-                                                        placeholder="Search for..." aria-label="Search"
-                                                        aria-describedby="basic-addon2">
-                                                    <div class="input-group-append">
-                                                        <button class="btn btn-primary" type="button">
-                                                            <i class="fas fa-search fa-sm"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
                                         </div>
-                                        <div class="sidebar-brand-text mx-3">Book store</div>
-                                        </a>
-                                        <hr class="sidebar-divider my-0">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">
-                                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                                            <span>Thanh dieu khien</span></a>
-                                    </li>
-
-                                    <hr class="sidebar-divider">
-                                    <div class="sidebar-heading">
-                                        Danh muc
                                     </div>
-                                    <li class="nav-item">
-                                        <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                            data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                            <span>Sach</span>
-                                        </a>
-                                    </li>
+                                </form>
+                            </div>
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown">
+                            <a style="align-items: center; display: flex;" class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:out value="${staff.fullName.firstName }"></c:out></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
                                 </ul>
                             </nav>
                             <div class="container-fluid mt-3">
@@ -179,17 +173,14 @@
                                                                     })
                                                             }
                                                         </script>
-                                                        <input name="id" type="hidden" value="<c:out value="
-                                                            ${bookItem.id }"></c:out>">
+                                                        <input name="id" type="hidden" value="<c:out value="${bookItem.id }"></c:out>">
                                                         <button data-toggle="modal" data-target="#basicExampleModal2"
                                                             class="btn btn-primary btn-rounded btn-sm my-0"
-                                                            name="edit_book" onclick="edit(<c:out value=" ${bookItem.id
-                                                            }"></c:out>)">
+                                                            name="edit_book" onclick="edit(<c:out value="${bookItem.id}"></c:out>)">
                                                             Edit
                                                         </button>
                                                         <form method="post">
-                                                            <input name="id" type="hidden" value="<c:out value="
-                                                                ${bookItem.id }"></c:out>">
+                                                            <input name="id" type="hidden" value="<c:out value="${bookItem.id }"></c:out>">
                                                             <button type="submit"
                                                                 class="btn btn-danger btn-rounded btn-sm my-0"
                                                                 name="delete_book">
@@ -279,7 +270,7 @@
                                                 <select class="browser-default custom-select" name="select_author">
                                                     <option selected value="new">Thêm mới</option>
                                                     <c:forEach var="author" items="${authors }">
-                                                        <option value="<c:out value=" ${ author.id}" />" >
+                                                        <option value="<c:out value="${ author.id}" />" >
                                                         <c:out value="${author.name }" />
                                                         </option>
                                                     </c:forEach>
@@ -303,7 +294,7 @@
                                                 <select class="browser-default custom-select" name="select_publisher">
                                                     <option selected value="new">Thêm mới</option>
                                                     <c:forEach var="publisher" items="${publishers }">
-                                                        <option value="<c:out value=" ${ publisher.id}" />" >
+                                                        <option value="<c:out value="${ publisher.id}" />" >
                                                         <c:out value="${publisher.name }" />
                                                         </option>
                                                     </c:forEach>
@@ -325,13 +316,19 @@
                                                 <label for="basic-url">Danh mục</label>
                                                 <select class="browser-default custom-select" name="category_id">
                                                     <c:forEach var="category" items="${categories }">
-                                                        <option value="<c:out value=" ${ category.id}" />" >
+                                                        <option value="<c:out value="${category.id}" />" >
                                                         <c:out value="${category.name }" />
                                                         </option>
                                                     </c:forEach>
                                                 </select>
                                             </div>
                                         </div>
+                                		<div class="d-flex justify-content-end">
+	                                		<button type="submit" class="btn btn-primary" name="add_book" >
+		                                		Lưu
+		                                    </button>
+                                		</div>
+                                	</form>
                                 </div>
                             </div>
                         </div>
